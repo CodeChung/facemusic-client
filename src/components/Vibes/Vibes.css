@@ -1,0 +1,29 @@
+.search-track, .search-artist {
+    width: 200px;
+    height: 270px;
+}
+
+.search-img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.search-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.search-img button {
+    width: 200px;
+    height: 200px;
+    border: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.445);
+    z-index: 100;
+    color: white;
+    font-size: 30px;
+    top: 0;
+    left: 0;
+}
