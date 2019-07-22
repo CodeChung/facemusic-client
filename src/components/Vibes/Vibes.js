@@ -52,6 +52,7 @@ class Preferences extends React.Component {
                 album={track.album}
             />
         })
+        
         return (
             <section className='vibes'>
                 <form className='add-vibe' onSubmit={event => this.handleSearch(event)}>
