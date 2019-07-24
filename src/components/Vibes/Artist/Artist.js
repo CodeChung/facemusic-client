@@ -8,7 +8,7 @@ class Artist extends React.Component {
         }
     }
     render() {
-        const {name, id, img, message, handleClick} = this.props
+        const {name, img, message, handleClick} = this.props
         return (
             <div className='search-artist'
                 onMouseEnter={() => this.setState({button_visible: true})}

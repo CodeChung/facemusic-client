@@ -13,12 +13,21 @@ class App extends React.Component {
     this.state = {
       user_id: null,
       update_id: this.updateId,
-      tracks: ['dd'],
+      tracks: [],
       artists:[],
     }
   }
   updateId(id) {
     this.setState({user_id: id})
+  }
+  componentDidMount() {
+    //TODO replace with user_id
+    ServerApiService.getSavedSeeds(1)
+      .then(res => {
+        console.log(res)
+        const { tracks, artists } = res
+        this.setState({ tracks, artists })
+      })
   }
   render() {
     return (

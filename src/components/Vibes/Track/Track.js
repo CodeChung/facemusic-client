@@ -8,7 +8,7 @@ class Track extends React.Component {
         }
     }
     render() {
-        const {name, id, img, artist, album, handleClick} = this.props
+        const {name, img, artist, album, handleClick} = this.props
         return (
             <div className='search-track'
                 onMouseEnter={() => this.setState({button_visible: true})}
