@@ -4,14 +4,17 @@ import { Route, Link } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Calendar from './components/Calendar/Calendar';
 import Preferences from './components/Vibes/Vibes';
-import AppContext from './AppContext'
+import AppContext from './AppContext';
+import ServerApiService from './services/server-api-service';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       user_id: null,
-      update_id: this.updateId
+      update_id: this.updateId,
+      tracks: ['dd'],
+      artists:[],
     }
   }
   updateId(id) {
