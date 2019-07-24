@@ -12,6 +12,7 @@ class Photolist extends React.Component {
                 src={uri} 
                 alt={`pic-${index}`} 
                 width={80} 
+                height={60}
                 onClick={()=> {
                     console.log(index)
                     this.props.handleClick(index)}}/>

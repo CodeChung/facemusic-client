@@ -1,6 +1,7 @@
 import React from 'react';
 import Artist from './Artist/Artist';
 import Track from './Track/Track';
+import ServerApiService from '../../services/server-api-service'
 import './Vibes.css'
 
 class Preferences extends React.Component {
@@ -18,21 +19,13 @@ class Preferences extends React.Component {
     handleSearch(event) {
         event.preventDefault()
         const keyword = this.state.keyword
-        const url = 'http://localhost:8000/api/music/search/' + keyword
-        
-        fetch(url)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Search went wrong. Please try again')
-                }
-                return res.json()
-            })
-            .then(searchResults => {
-                console.log(searchResults)
-                const { artists, tracks } = searchResults
+        ServerApiService.getSpotifySearch(keyword)
+            .then(result => {
+                const { artists, tracks } = result
                 this.setState({ artists, tracks })
             })
     }
+        
     render() {
         const artists = this.state.artists.map((artist, index) => {
             return <Artist 
