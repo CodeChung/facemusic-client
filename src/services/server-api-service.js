@@ -72,6 +72,22 @@ const ServerApiService = {
                 return res.json()
             })
             
+    },
+    //TODO Implement USER_ID
+    getRecommendations(emotions, user_id=1) {
+        const emotionJson = JSON.stringify(emotions)
+        return fetch(`${config.API_ENDPOINT}/music/recommendations`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: emotionJson
+        })
+            .then(res =>
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
     }
 }
 

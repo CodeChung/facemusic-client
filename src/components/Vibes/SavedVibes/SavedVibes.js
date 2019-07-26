@@ -36,7 +36,7 @@ class SavedVibes extends React.Component {
                 id={id}
                 artist={artist}
                 album={album}
-                messsage='Delete Vibe'
+                message='Delete Vibe'
                 handleClick={() => this.handleClick(name, id, img, artist, album)}
             />
         })

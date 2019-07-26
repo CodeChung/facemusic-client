@@ -14,7 +14,6 @@ class Photolist extends React.Component {
                 width={80} 
                 height={60}
                 onClick={()=> {
-                    console.log(index)
                     this.props.handleClick(index)}}/>
         })
         return (

@@ -2,6 +2,7 @@ import React from 'react';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import Photolist from './PhotoList/PhotoList';
+import Results from './Results/Results'
 import './WebCam.css'
 import ServerApiService from '../../services/server-api-service';
 
@@ -68,9 +69,9 @@ class WebCam extends React.Component {
                 <button className='delete-img' onClick={() => this.deletePhoto()}>Delete</button>
             </div>
     }
-    renderSpotifyResults() {
+    renderEmotionResults() {
         if (Object.entries(this.state.emotion).length) {
-            //get user's music seeds TODO implement actual id in context
+            return <Results emotion={this.state.emotion}/>
         }
     }
     render() {
@@ -81,6 +82,7 @@ class WebCam extends React.Component {
                     width={768}
                     photos={this.state.photos}
                     handleClick={(imgKey) => this.onClickPhoto(imgKey)}/>
+                {this.renderEmotionResults()}
             </div>
         )
     }

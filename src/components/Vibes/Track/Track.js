@@ -8,7 +8,7 @@ class Track extends React.Component {
         }
     }
     render() {
-        const {name, img, artist, album, handleClick} = this.props
+        const {name, img, artist, album, message, handleClick} = this.props
         return (
             <div className='search-track'
                 onMouseEnter={() => this.setState({button_visible: true})}
@@ -17,7 +17,7 @@ class Track extends React.Component {
                 >
                 <div className='search-img'>
                     <img src={img} alt='track' width={200} height={200}/>
-                    {this.state.button_visible && <button>Add Vibe</button>}
+                    {this.state.button_visible && <button>{message}</button>}
                 </div>
                 
                 <h4>{name}</h4>
@@ -25,6 +25,10 @@ class Track extends React.Component {
             </div>
         )
     }
+}
+
+Track.defaultProps = {
+    handleClick: () => {return}
 }
 
 export default Track
