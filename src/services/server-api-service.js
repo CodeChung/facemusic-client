@@ -88,6 +88,22 @@ const ServerApiService = {
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
             )
+    },
+    //TODO implement USER_ID
+    saveEntry(notes, img, song, user_id=1) {
+        const entryJson = JSON.stringify({notes, img, song, user_id})
+        return fetch(`${config.API_ENDPOINT}/entries`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: entryJson
+        })
+            .then(res =>
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
     }
 }
 

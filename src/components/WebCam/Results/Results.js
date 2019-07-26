@@ -56,7 +56,7 @@ class Results extends React.Component {
                         img={img}
                         artist={artist}
                         album={album}
-                        message='🎧'/>
+                        message='Listen'/>
                     </a>
                     <button
                         onClick={() => this.saveRecommendation(track)}>
