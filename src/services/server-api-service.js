@@ -90,7 +90,8 @@ const ServerApiService = {
             )
     },
     //TODO implement USER_ID
-    saveEntry(notes, img, song, user_id=1) {
+    saveEntry(notes, img, song, emotions, user_id=1) {
+        //insert to emotions table; return emotions id save into entries table;
         const entryJson = JSON.stringify({notes, img, song, user_id})
         return fetch(`${config.API_ENDPOINT}/entries`, {
             headers: {

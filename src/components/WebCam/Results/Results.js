@@ -10,7 +10,8 @@ class Results extends React.Component {
         this.state = {
             emotionData: [],
             notes: '',
-            tracks: []
+            tracks: [],
+            chosenTrack: ''
         }
     }
     componentDidMount() {
@@ -34,8 +35,17 @@ class Results extends React.Component {
         ServerApiService.getRecommendations(emotions)
             .then(result => this.setState({tracks: result}))
     }
-    saveRecommendation(track) {
-        console.log(track)
+    //if chosenTrack already filled, patch entry else set new chosen track and entry
+    saveEntry(track) {
+        if (this.state.chosenTrack !== track) {
+            // TODO patch entry
+            // FIX i have emotionData in state and props
+        } else {
+            
+            ServerApiService.saveEntry(this.props.emotion)
+        }
+        this.setState({chosenTrack: track})
+
     }
     render() {
         const emotionData = Object.entries(this.props.emotion).filter(emotion => emotion[1] > 0)
