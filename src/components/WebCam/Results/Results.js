@@ -8,22 +8,17 @@ class Results extends React.Component {
         super(props)
         // maybe split up components
         this.state = {
-            emotionData: [],
+            emotions: {},
             notes: '',
             tracks: [],
-            chosenTrack: ''
+            chosenTrack: '',
+            photo: '',
         }
     }
     componentDidMount() {
         const emotions = this.props.emotion
-        const neutralOffset = emotions.neutral
-        const emotionData = Object.entries(this.props.emotion).filter(emotion => emotion[1] > 0 && emotion[0] !== 'neutral')
-        .map(emotion => 
-            ({
-                id: emotion[0],
-                value: emotion[1]/neutralOffset
-            }))
-        this.setState({emotionData})
+        const photo = this.props.photo
+        this.setState({ emotions, photo })
     }
     updateNotes(notes) {
         this.setState({notes})
@@ -38,11 +33,11 @@ class Results extends React.Component {
     //if chosenTrack already filled, patch entry else set new chosen track and entry
     saveEntry(track) {
         if (this.state.chosenTrack !== track) {
+
             // TODO patch entry
-            // FIX i have emotionData in state and props
         } else {
-            
-            ServerApiService.saveEntry(this.props.emotion)
+            const { notes, photo, emotions } = this.state
+            ServerApiService.saveEntry(notes, photo, track, emotions)
         }
         this.setState({chosenTrack: track})
 
@@ -69,7 +64,7 @@ class Results extends React.Component {
                         message='Listen'/>
                     </a>
                     <button
-                        onClick={() => this.saveRecommendation(track)}>
+                        onClick={() => this.saveEntry(track)}>
                         Save
                     </button>
                 </div>

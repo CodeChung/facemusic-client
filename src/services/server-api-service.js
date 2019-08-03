@@ -20,29 +20,32 @@ const ServerApiService = {
             method: 'POST',
             body: img
         })
-            .then(res => {
-                if (!res.ok) {
-                    this.setState({error: 'Something went wrong, try again.'})
-                }
-                return res.json()
-            })
-    },
-    //TODO IMPLEMENT USER_ID here
-    getSavedSeeds(user_id) {
-        return fetch(`${config.API_ENDPOINT}/music/vibes`)
             .then(res =>
                 (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
             )
     },
-    //TODO IMPLEMENT USER_ID
-    saveTrack(name, id, img, artist, album, user_id=1) {
-        const track = JSON.stringify({name, id, img, artist, album, user_id})
+    //TODO IMPLEMENT USER_ID here
+    getSavedSeeds(user_id) {
+        return fetch(`${config.API_ENDPOINT}/music/vibes`, {
+            headers: {
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            }
+        })
+            .then(res =>
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
+    },
+    saveTrack(name, id, img, artist, album) {
+        const track = JSON.stringify({name, id, img, artist, album})
         return fetch(`${config.API_ENDPOINT}/music/vibes`, {
             headers: {
                 'Content-Type': 'application/json',
-                'type': 'track'
+                'type': 'track',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             method: 'POST',
             body: track
@@ -54,13 +57,13 @@ const ServerApiService = {
                 return res.json()
             })
     },
-    //TODO IMPLEMENT USER_ID
-    saveArtist(name, id, img, user_id=1) {
-        const artist = JSON.stringify({name, id, img, user_id})
+    saveArtist(name, id, img) {
+        const artist = JSON.stringify({name, id, img})
         return fetch(`${config.API_ENDPOINT}/music/vibes`, {
             headers: {
                 'Content-Type': 'application/json',
-                'type': 'artist'
+                'type': 'artist',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             method: 'POST',
             body: artist
@@ -73,12 +76,12 @@ const ServerApiService = {
             })
             
     },
-    //TODO Implement USER_ID
-    getRecommendations(emotions, user_id=1) {
+    getRecommendations(emotions) {
         const emotionJson = JSON.stringify(emotions)
         return fetch(`${config.API_ENDPOINT}/music/recommendations`, {
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             method: 'POST',
             body: emotionJson
@@ -89,13 +92,13 @@ const ServerApiService = {
                 : res.json()
             )
     },
-    //TODO implement USER_ID
-    saveEntry(notes, img, song, emotions, user_id=1) {
+    saveEntry(notes, img, song, emotions) {
         //insert to emotions table; return emotions id save into entries table;
-        const entryJson = JSON.stringify({notes, img, song, user_id})
-        return fetch(`${config.API_ENDPOINT}/entries`, {
+        const entryJson = JSON.stringify({notes, img, song, emotions})
+        return fetch(`${config.API_ENDPOINT}/entries/new`, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
             },
             method: 'POST',
             body: entryJson
@@ -103,6 +106,19 @@ const ServerApiService = {
             .then(res =>
                 (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
+    },
+    getEntries() {
+        return fetch(`${config.API_ENDPOINT}/entries`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+        })
+            .then(res => 
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))    
                 : res.json()
             )
     }

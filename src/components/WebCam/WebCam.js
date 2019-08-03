@@ -14,6 +14,7 @@ class WebCam extends React.Component {
             current: 0,
             count: 0,
             error: '',
+            analyzedPhoto: '',
             emotion: {}
         }
     }
@@ -47,7 +48,10 @@ class WebCam extends React.Component {
                 if (res.error) {
                     this.setState({error: res.error})
                 } else {
-                    this.setState({emotion: res['faceAttributes']['emotion']})
+                    this.setState({
+                        emotion: res.faceAttributes.emotion,
+                        analyzedPhoto: res.url
+                    })
                 }
             })
     }
@@ -71,7 +75,7 @@ class WebCam extends React.Component {
     }
     renderEmotionResults() {
         if (Object.entries(this.state.emotion).length) {
-            return <Results emotion={this.state.emotion}/>
+            return <Results emotion={this.state.emotion} photo={this.state.analyzedPhoto}/>
         }
     }
     render() {
