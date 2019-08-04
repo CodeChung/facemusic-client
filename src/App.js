@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Link } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Calendar from './components/Calendar/Calendar';
+import CalendarPage from './routes/CalendarPage/CalendarPage';
 import Preferences from './components/Vibes/Vibes';
 import LoginPage from './components/Login/Login'
 import AppContext from './AppContext';
@@ -26,7 +26,6 @@ class App extends React.Component {
     //TODO replace with user_id
     ServerApiService.getSavedSeeds(1)
       .then(res => {
-        console.log(res)
         const { tracks, artists } = res
         this.setState({ tracks, artists })
       })
@@ -45,7 +44,7 @@ class App extends React.Component {
           <section className="main">
             <Route exact path='/' component={Home}/>
             <Route path='/vibes' component={Preferences}/>
-            <Route path='/calendar' component={Calendar}/>
+            <Route path='/calendar' component={CalendarPage}/>
             <Route path='/login' component={LoginPage}/>
             <Route path='/register' component={RegistrationPage}/>
           </section>

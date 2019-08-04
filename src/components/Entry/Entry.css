@@ -1,0 +1,12 @@
+.entry {
+    display: flex;
+    justify-content: center;
+}
+
+.doughnut {
+    width: 40%;
+}
+
+.pic {
+    width: 40%;
+}
