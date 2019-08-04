@@ -15,42 +15,52 @@ class Donut extends React.Component {
                 sadness: '#337DFF',
                 surprise: '#D3FF0E'
             },
-            data: {
-                labels: [],
-                datasets: [{
-                    data: [],
-                    backgroundColor: [],
-                    hoverBackgroundColor: []
-                }],
-            }
         }
     }
-    componentDidUpdate() {
+    getData() {
+        // QUESTION ASK why cant i setstate in componentdidmount? but it works in entry.js????
+        //convert emotions data into format that doughnut specifies
         const emotions = this.props.emotions
+        const labels = []
+        const data = []
+        const backgroundColor = []
+        const hoverBackgroundColor = []
+    
         for (const [key, value] of Object.entries(emotions)) {
-            const data = this.state.data
             const capitalizedWord = key[0].toUpperCase() + key.slice(1)
             if (parseFloat(value) > 0) {
-                data.labels.push(capitalizedWord)
-                data.datasets[0].data.push(parseFloat(value))
-                data.datasets[0].backgroundColor.push(this.state.colors[key])
-                data.datasets[0].hoverBackgroundColor.push(this.state.colors[key])
+                labels.push(capitalizedWord)
+                data.push(parseFloat(value))
+                backgroundColor.push(this.state.colors[key])
+                hoverBackgroundColor.push(this.state.colors[key])
             }
         }
+        const datasets = [{
+            data,
+            backgroundColor,
+            hoverBackgroundColor
+        }]
+        const graphData = {
+            labels,
+            datasets
+        }
+        return graphData
+       
     }
     render() {
-        const options = {
-            // maintainAspectRatio: true,
-            // responsive: true,
-            legend: {
-                position: 'bottom'
-            }
-        }
         return (
-            <Doughnut 
-                data={this.state.data}
-                options={options}
-                />
+            <div>
+                <Doughnut
+                    data={this.getData()}
+                    options={{
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        legend: {
+                            position: 'bottom'
+                        }
+                      }}
+                    />
+            </div>
         )
     }
 }

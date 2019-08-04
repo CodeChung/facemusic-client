@@ -181,3 +181,9 @@ main {
   flex-basis: calc(100% / 7);
   width: calc(100% / 7);
 }
+
+.calendar .calendar-thumbnail {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}

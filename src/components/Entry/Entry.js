@@ -13,29 +13,23 @@ class Entry extends React.Component {
         this.setState({emotions})
     }
     render() {
+        const url = this.props.entry.song.url.replace('track', 'embed/track')
         return (
-            // <div className='entry-page'>
-            //     {/* <button onClick={this.props.resetCalendar}>return</button> */}
-            //     {/* <div className='entry'>
+            <div>
+                <button onClick={() => this.props.resetCalendar()}>Return to Calendar</button>
+                <div className='entry'>
+                    <img src={this.props.entry.img} alt='daily face'/>
+                    <div className='donut'>
+                        <Donut emotions={this.state.emotions}/>
+                        <iframe title='spotify' src={url} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
                     
-            //         <div className='doughnut'>
-            //             <Donut emotions={this.state.emotions}/>
-            //         </div>
-            //         <img src={this.props.entry.img} alt='daily face'/>
-                    
-                    
-            //     </div>
-            //     <div className='notes'>
-            //         <h2>Notes:</h2>
-            //         {this.props.notes}
-            //     </div> */}
-            //     <div className='entry'>
-            //         <Donut emotions={this.state.emotions}/>
-                    
-            //     </div>
-            //     {/* <iframe src="https://open.spotify.com/embed/track/5X82VFLvjpeWQlTSShqqj0" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
-            // </div>
-            <Donut emotions={this.state.emotions}/>
+                </div>
+                <div className='entry-notes'>
+                    <h3>Notes:</h3>
+                    {this.props.entry.notes}
+                </div>
+            </div>
         )
     }
 }

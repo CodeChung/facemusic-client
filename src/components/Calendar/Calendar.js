@@ -77,7 +77,7 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-            {img && <img src={img} alt='face for the day'/>}
+            {img && <img className='calendar-thumbnail' src={img} alt='face for the day'/>}
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>

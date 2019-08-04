@@ -1,12 +1,18 @@
 .entry {
     display: flex;
     justify-content: center;
+    
 }
 
-.doughnut {
+.entry img {
     width: 40%;
 }
 
-.pic {
+.entry .donut {
     width: 40%;
+}
+
+.donut iframe {
+    width: 90%;
+    margin: 0 auto;
 }
