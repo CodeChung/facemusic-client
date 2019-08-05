@@ -20,8 +20,9 @@ class Entry extends React.Component {
                 <div className='entry'>
                     <img src={this.props.entry.img} alt='daily face'/>
                     <div className='donut'>
+                        {/* <h3>Emotional Analysis</h3> */}
                         <Donut emotions={this.state.emotions}/>
-                        <iframe title='spotify' src={url} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
                     
                 </div>

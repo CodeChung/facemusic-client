@@ -26,8 +26,7 @@ const ServerApiService = {
                 : res.json()
             )
     },
-    //TODO IMPLEMENT USER_ID here
-    getSavedSeeds(user_id) {
+    getSavedSeeds() {
         return fetch(`${config.API_ENDPOINT}/music/vibes`, {
             headers: {
                 'authorization': `bearer ${TokenService.getAuthToken()}`

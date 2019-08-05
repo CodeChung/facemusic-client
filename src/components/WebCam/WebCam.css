@@ -6,6 +6,7 @@
 .current-img {
     width: 768px;
     position: relative;
+    margin: 0 auto;
 }
 
 .current-img img {
@@ -32,4 +33,10 @@
 .emotion-graph {
     background: black;
     height: 300px;
+}
+
+.hidden {
+    visibility: hidden;
+    height: 576px;
+    padding: 5px;
 }

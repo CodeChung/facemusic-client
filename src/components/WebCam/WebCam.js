@@ -65,6 +65,7 @@ class WebCam extends React.Component {
                 idealResolution={{width: 640, height: 480}}/>
             :
             <div className='current-img'>
+                <div className='hidden'/>
                 <img
                     width={768}
                     src={photo}
@@ -80,14 +81,17 @@ class WebCam extends React.Component {
     }
     render() {
         return (
-            <div className="camera">
-                {this.renderPhotoDisplay()}
+            <section className='camera-page'>
+                <div className="camera">
+                    {this.renderPhotoDisplay()}
+                </div>
                 <Photolist 
                     width={768}
                     photos={this.state.photos}
                     handleClick={(imgKey) => this.onClickPhoto(imgKey)}/>
                 {this.renderEmotionResults()}
-            </div>
+            </section>
+            
         )
     }
 }

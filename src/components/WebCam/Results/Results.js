@@ -32,13 +32,14 @@ class Results extends React.Component {
     }
     //if chosenTrack already filled, patch entry else set new chosen track and entry
     saveEntry(track) {
-        if (this.state.chosenTrack !== track) {
-
-            // TODO patch entry
-        } else {
+        if (!this.state.chosenTrack) {
             const { notes, photo, emotions } = this.state
             ServerApiService.saveEntry(notes, photo, track, emotions)
         }
+        else if (this.state.chosenTrack !== track) {
+
+            // TODO patch entry
+        } 
         this.setState({chosenTrack: track})
 
     }
