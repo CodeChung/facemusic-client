@@ -17,11 +17,11 @@ class Track extends React.Component {
                 >
                 <div className='search-img'>
                     <img src={img} alt='track' width={200} height={200}/>
-                    {this.state.button_visible && <button>{message}</button>}
+                    <button>{message}</button>
                 </div>
                 
                 <h4>{name}</h4>
-                <p>{artist} • {album}</p>
+                <p>{artist}<br/><i>{album}</i></p>
             </div>
         )
     }

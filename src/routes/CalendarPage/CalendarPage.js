@@ -31,6 +31,7 @@ class CalendarPage extends React.Component {
     renderEntryPage() {
         const { entries, currentDay } = this.state
         return <Entry 
+                    calendar={true}
                     entry={entries[currentDay]}
                     resetCalendar={() => this.resetCalendar()}
                 />

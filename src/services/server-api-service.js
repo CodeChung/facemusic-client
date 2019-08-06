@@ -20,10 +20,7 @@ const ServerApiService = {
             method: 'POST',
             body: img
         })
-            .then(res =>
-                (!res.ok)
-                ? res.json().then(e => Promise.reject(e))
-                : res.json()
+            .then(res => res.json()
             )
     },
     getSavedSeeds() {
@@ -74,6 +71,25 @@ const ServerApiService = {
                 return res.json()
             })
             
+    },
+    deleteSeed(type, id) {
+        const seed = JSON.stringify({id})
+        return fetch(`${config.API_ENDPOINT}/music/vibes`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'type': type,
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            method: 'DELETE',
+            body: seed
+        })
+            .then(res => {
+                console.log(res.json())
+                if (!res.ok) {
+                    return {error: 'Something went wrong, try again.'}
+                }
+                return res.json()
+            })
     },
     getRecommendations(emotions) {
         const emotionJson = JSON.stringify(emotions)

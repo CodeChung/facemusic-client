@@ -48,9 +48,13 @@ class Donut extends React.Component {
        
     }
     render() {
+        const style = {
+            backgroundImage: this.props.background || ''
+        }
         return (
-            <div>
+            <div className='doughnut'>
                 <Doughnut
+                    style={style}
                     data={this.getData()}
                     options={{
                         responsive: true,

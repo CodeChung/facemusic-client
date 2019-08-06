@@ -16,7 +16,7 @@ class Entry extends React.Component {
         const url = this.props.entry.song.url.replace('track', 'embed/track')
         return (
             <div>
-                <button onClick={() => this.props.resetCalendar()}>Return to Calendar</button>
+                {this.props.calendar && <button onClick={() => this.props.resetCalendar()}>Return to Calendar</button>}
                 <div className='entry'>
                     <img src={this.props.entry.img} alt='daily face'/>
                     <div className='donut'>

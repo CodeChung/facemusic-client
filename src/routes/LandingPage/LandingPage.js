@@ -1,10 +1,10 @@
 import React from 'react'
 import TokenService from '../../services/token-service';
-import Home from '../../components/Home/Home';
+import HomePage from '../../routes/HomePage/HomePage';
 
 class LandingPage extends React.Component {
     render() {
-        const view = TokenService.hasAuthToken() ? <Home/> : <div>Yolo</div>
+        const view = TokenService.hasAuthToken() ? <HomePage/> : <div>Yolo</div>
         return (
             <div>
                 {view}

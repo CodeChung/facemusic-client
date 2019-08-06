@@ -1,7 +1,8 @@
 import React from 'react'
 import Artist from '../Artist/Artist'
 import Track from '../Track/Track'
-import ServerApiService from '../../../services/server-api-service'
+import ServerApiService from '../../services/server-api-service'
+
 
 class SearchVibes extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class SearchVibes extends React.Component {
             keyword: '',
             artists: [],
             tracks: [],
+            view: 'artists'
         }
     }
     updateKeyword(keyword) {
@@ -25,16 +27,22 @@ class SearchVibes extends React.Component {
             })
     }
     addArtist(name, id, img) {
-        const artists = this.state.artists.filter(artist => artist.id !== id)
+        const artists = this.state.artists.filter(artist => {
+            return artist.id !== id})
+        console.log(id)
         this.setState({artists})
         ServerApiService.saveArtist(name, id, img)
     }
     addTrack(name, id, img, artist, album) {
         const tracks = this.state.tracks.filter(track => track.id !== id)
+
         this.setState({tracks})
         ServerApiService.saveTrack(name, id, img, artist, album)
     }
-    render() {
+    clickView(type) {
+        this.setState({view: type})
+    }
+    renderView() {
         const artists = this.state.artists.map((artist, index) => {
             const { name, id, images } = artist
             const img = images.length > 0 ? images[0].url : 'https://www.placecage.com/280/280'
@@ -43,7 +51,7 @@ class SearchVibes extends React.Component {
                 name={name} 
                 img={img}
                 id={artist.id}
-                message='Add Vibe'
+                message='Save'
                 handleClick={() => this.addArtist(name, id, img)}
                 />
         })
@@ -57,15 +65,25 @@ class SearchVibes extends React.Component {
                 id={id}
                 artist={artist}
                 album={album}
-                messsage='Add Vibe'
+                message='Save'
                 handleClick={() => this.addTrack(name, id, img, artist, album)}
             />
         })
-        
+        return this.state.view === 'artists' ?
+            <div className='vibes-list'>
+                {artists}
+            </div>
+            :
+            <div className='vibes-list'>
+                {tracks}
+            </div>
+    }
+    render() {
         return (
             <section className='search-vibes'>
                 <form className='add-vibe' onSubmit={event => this.handleSearch(event)}>
-                    <label htmlFor='vibe'>Find Vibes</label>
+                    <label htmlFor='vibe'>Want Facejams based on music you like? <br/>Save your artist/track preferences here.</label>
+                    <br/>
                     <input 
                         id='vibe'
                         name='vibe' 
@@ -74,14 +92,13 @@ class SearchVibes extends React.Component {
                         onChange={event => this.updateKeyword(event.target.value)}/>
                     <button>Search</button>
                 </form>
-                <div className='artists'>
-                    <h2>Artists</h2>
-                    {artists}
-                </div>
-                <div className='tracks'>
-                    <h2>Tracks</h2>
-                    {tracks}
-                </div>
+                <nav className='seed-toggle'>
+                    <ul>
+                        <li><button onClick={() => this.clickView('artists')}>Artists</button></li>
+                        <li><button onClick={() => this.clickView('tracks')}>Tracks</button></li>
+                    </ul>
+                </nav>
+                {this.renderView()}
             </section>
         )
     }

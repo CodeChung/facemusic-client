@@ -1,13 +1,10 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-import SavedVibes from './SavedVibes/SavedVibes'
-import SearchVibes from './SearchVibes/SearchVibes'
+import SavedVibes from '../../components/SavedVibes/SavedVibes'
+import SearchVibes from '../../components/SearchVibes/SearchVibes'
 import './Vibes.css'
 
 class Preferences extends React.Component {
-    onComponentDidMount() {
-        
-    }
     render() {
         return (
             <section className='vibes'>

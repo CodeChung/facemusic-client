@@ -1,7 +1,7 @@
 import React from 'react'
-import { ResponsivePie } from '@nivo/pie'
-import ServerApiService from '../../../services/server-api-service';
-import Track from '../../Vibes/Track/Track';
+import ServerApiService from '../../services/server-api-service'
+import Track from '../Track/Track';
+import Donut from '../Donut/Donut'
 
 class Results extends React.Component {
     constructor(props) {
@@ -44,13 +44,6 @@ class Results extends React.Component {
 
     }
     render() {
-        const emotionData = Object.entries(this.props.emotion).filter(emotion => emotion[1] > 0)
-            .map(emotion => 
-                ({
-                    id: emotion[0],
-                    value: emotion[1]
-                }))
-
         const tracks = this.state.tracks.map((track, index) => {
             const { name, images, artist, album, url } = track
             const img = images.length > 0 ? images[0].url : 'https://www.placecage.com/280/280'
@@ -73,28 +66,10 @@ class Results extends React.Component {
         })
         return (
             <div className='emotion-graph'>
-                <ResponsivePie 
-                    data={emotionData} 
-                    margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-                    innerRadius={0.5}
-                    padAngle={0.7}
-                    cornerRadius={3}
-                    colors={{ scheme: 'nivo' }}
-                    borderWidth={1}
-                    borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
-                    radialLabelsSkipAngle={10}
-                    radialLabelsTextXOffset={6}
-                    radialLabelsTextColor="#333333"
-                    radialLabelsLinkOffset={0}
-                    radialLabelsLinkDiagonalLength={16}
-                    radialLabelsLinkHorizontalLength={24}
-                    radialLabelsLinkStrokeWidth={1}
-                    radialLabelsLinkColor={{ from: 'color' }}
-                    slicesLabelsSkipAngle={10}
-                    slicesLabelsTextColor="#333333"
-                    animate={true}
-                    motionStiffness={90}
-                    motionDamping={15}
+                <img src={this.state.photo} alt='journal face'/>
+                <Donut
+                    emotions={this.state.emotions}
+                    background={this.state.photo}
                 />
                 <form onSubmit={event => this.handleSubmit(event)}>
                     <legend>Today's Highlights</legend>
@@ -102,9 +77,13 @@ class Results extends React.Component {
                         placeholder='Today I...'
                         onChange={e => this.updateNotes(e.target.value)}
                         />
+                    <br/>
                     <button>Find Track</button>
                 </form>
-                {tracks}
+                {this.state.tracks && <h3>Recommendations</h3>}
+                <div className='recommendation-list'>
+                    {tracks}
+                </div>
             </div>
         )
     }

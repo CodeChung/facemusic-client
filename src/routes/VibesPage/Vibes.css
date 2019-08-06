@@ -1,0 +1,137 @@
+.search-track, .search-artist {
+    width: 200px;
+    height: 270px;
+}
+
+.search-track p {
+    margin: 0;
+}
+
+.search-img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.search-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.search-img button {
+    width: 200px;
+    height: 200px;
+    border: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.445);
+    z-index: 100;
+    color: white;
+    font-size: 30px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.search-img button:hover {
+    opacity: 1;
+}
+
+.search-img button:focus {
+    outline: 0;
+}
+
+.search-img:active {
+    transform: matrix(0.95, 0, 0, 0.95, 0, 0);
+}
+
+
+
+
+.vibes {
+    display: flex;
+}
+
+.vibes-nav {
+    width: 10%;
+    text-decoration: none;
+}
+
+.vibes ul li {
+    list-style-type: none;
+}
+
+.vibes a {
+    text-decoration: none;
+}
+
+.seed-toggle ul {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.vibes-main {
+    width: 100%;
+}
+
+.searched-vibes {
+    display: flex;
+    justify-content: center;
+}
+
+.add-vibe input {
+    margin: 20px 5px 5px;
+    width: 200px;
+}
+
+.vibes-list {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+
+.search-artist, .search-track {
+    margin: 10px;
+    width: 150px;
+    height: auto;
+}
+
+.search-artist h4, .search-track h4 {
+    margin: 5px;
+}
+
+.search-artist button, .search-track button {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.search-img {
+    transition: box-shadow .3s;
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.search-img:hover {
+    box-shadow: 0 0 20px rgba(33,33,33,.2); 
+}
+
+
+
+.search-img img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.search-track h4 {
+    font-size: 15px;
+}
+
+.search-track p {
+    font-size: 12px;
+}

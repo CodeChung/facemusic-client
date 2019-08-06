@@ -1,15 +1,20 @@
 .camera {
     position: relative;
     justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .current-img {
     width: 768px;
+    height: auto;
     position: relative;
     margin: 0 auto;
 }
 
 .current-img img {
+    width: 100%;
+    height: auto;
     position: absolute;
     left: 0;
     top: 0;
@@ -31,12 +36,34 @@
 }
 
 .emotion-graph {
-    background: black;
-    height: 300px;
+    border-radius: 50px;
 }
 
 .hidden {
     visibility: hidden;
     height: 576px;
     padding: 5px;
+}
+
+.photo-carousel {
+    width: 100%;
+    overflow: scroll;
+}
+
+.recommendation-list {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+@media(max-width:768px){
+    .current-img {
+        width: 100%;
+    }
 }
