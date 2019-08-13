@@ -22,7 +22,10 @@ class SearchVibes extends React.Component {
         const keyword = this.state.keyword
         ServerApiService.getSpotifySearch(keyword)
             .then(result => {
+                console.log(result)
+                console.log('TOKEN', result.token)
                 const { artists, tracks } = result
+                console.log(artists, tracks)
                 this.setState({ artists, tracks })
             })
     }

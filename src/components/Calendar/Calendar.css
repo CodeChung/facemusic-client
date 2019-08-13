@@ -187,3 +187,16 @@ main {
   width: auto;
   margin: 0 auto;
 }
+
+@media(max-width:768px){
+  .calendar .calendar-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+  .header {
+    width: 100%;
+  }
+  .col-center {
+    font-size: 10px;
+  }
+}

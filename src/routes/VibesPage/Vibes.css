@@ -135,3 +135,19 @@
 .search-track p {
     font-size: 12px;
 }
+
+@media(max-width:768px){
+    .vibes {
+        flex-flow: column;
+    }
+    .vibes-nav {
+        width: 100%;
+    }
+    .vibes-nav ul {
+        display: flex;
+        justify-content: center;
+    }
+    .vibes-nav ul li {
+        padding: 10px;
+    }
+}

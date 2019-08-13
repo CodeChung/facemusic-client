@@ -17,6 +17,9 @@ class App extends React.Component {
     super(props)
     this.state = {
       update: false,
+      entry: {},
+      tracks: [], 
+      artists: []
     }
   }
   componentDidMount() {
@@ -33,35 +36,40 @@ class App extends React.Component {
   rerender() {
     this.setState({update: true})
   }
+  setEntry(entry) {
+    this.setState({entry})
+  }
   renderUser() {
     return (
-      <AppContext.Provider value={this.state}>
-        <div className="App">
-          <nav className="navigation">
-            <ul>
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/calendar'>Calendar</Link></li>
-              <li><Link to='/vibes'>Preferences</Link></li>
-              <li><Link to='/login' onClick={() => this.logout()}>Logout</Link></li>
-            </ul>
-          </nav>
-          <section className="main">
-            <Route exact path='/' component={HomePage}/>
-            <Route path='/vibes' component={Preferences}/>
-            <Route path='/calendar' component={CalendarPage}/>
-          </section>
-        </div>
-      </AppContext.Provider>
+      <div className="App">
+        <nav className="navigation">
+          <div className='nav-start'>FaceJams</div>
+          <div className='nav-mid'>
+            <Link to='/'>Home</Link>
+            <Link to='/calendar'>Calendar</Link>
+            <Link to='/vibes'>Preferences</Link>
+          </div>
+          <div className='nav-end'>
+            <Link to='/login' onClick={() => this.logout()}>Logout</Link>
+          </div>
+        </nav>
+        <section className="main">
+          <Route exact path='/' component={HomePage}/>
+          <Route path='/vibes' component={Preferences}/>
+          <Route path='/calendar' component={CalendarPage}/>
+        </section>
+      </div>
     )
   }
   renderNonUser() {
     return (
       <div className="App">
         <nav className="navigation">
-          <ul>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/register'>Register</Link></li>
-          </ul>
+          <div className='nav-start'>FaceJams</div>
+          <div className='nav-end'>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
+          </div>
         </nav>
         <section className="main">
           <Route exact path='/' component={LandingPage}/>
@@ -71,12 +79,24 @@ class App extends React.Component {
       </div>
     )
   }
+  view() {
+    return TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
+  }
   render() {
-    const view = TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
+    const contextValue = {
+      setEntry: (entry) => this.setEntry(entry),
+      entry: this.state.entry,
+      artists: this.state.artists,
+      tracks: this.state.tracks,
+      logged: false
+    }
     return (
-      <div className='view'>
-        {view}
-      </div>
+      <AppContext.Provider value={contextValue}>
+        <div className='view'>
+          {this.view()}
+        </div>
+      </AppContext.Provider>
+      
         
       )
   }

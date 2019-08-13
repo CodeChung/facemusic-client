@@ -66,4 +66,11 @@ a {
     .current-img {
         width: 100%;
     }
+    .emotion-graph img {
+        width: 100%;
+    }
+}
+
+.warning {
+    z-index: 100;
 }

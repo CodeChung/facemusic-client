@@ -84,7 +84,6 @@ const ServerApiService = {
             body: seed
         })
             .then(res => {
-                console.log(res.json())
                 if (!res.ok) {
                     return {error: 'Something went wrong, try again.'}
                 }

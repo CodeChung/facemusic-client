@@ -1,5 +1,6 @@
 import React from 'react'
 import Donut from '../Donut/Donut';
+import PropTypes from 'prop-types'
 import './Entry.css'
 
 class Entry extends React.Component {
@@ -33,6 +34,26 @@ class Entry extends React.Component {
             </div>
         )
     }
+}
+
+Entry.propTypes = {
+    calendar: PropTypes.bool,
+    entry: PropTypes.shape({
+        anger: PropTypes.string || PropTypes.number,
+        contempt: PropTypes.string || PropTypes.number,
+        disgust: PropTypes.string || PropTypes.number,
+        fear: PropTypes.string || PropTypes.number,
+        happiness: PropTypes.string || PropTypes.number,
+        neutral: PropTypes.string || PropTypes.number,
+        sadness: PropTypes.string || PropTypes.number,
+        surprise: PropTypes.string || PropTypes.number,
+        song: PropTypes.object,
+        date_created: PropTypes.string,
+        emotion_id: PropTypes.number,
+        img: PropTypes.string,
+        notes: PropTypes.string
+    }),
+
 }
 
 export default Entry

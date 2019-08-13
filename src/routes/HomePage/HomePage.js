@@ -4,6 +4,8 @@ import 'react-html5-camera-photo/build/css/index.css';
 import Results from '../../components/Results/Results'
 import './HomePage.css'
 import ServerApiService from '../../services/server-api-service';
+import Entry from '../../components/Entry/Entry';
+import AppContext from '../../AppContext';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -13,6 +15,9 @@ class HomePage extends React.Component {
             error: '',
             analyzedPhoto: '',
             emotion: {},
+            entry: {},
+            artistSeeds: [],
+            trackSeeds: []
         }
     }
     onTakePhoto(dataUri) {
@@ -38,9 +43,17 @@ class HomePage extends React.Component {
                 if (res.error) {
                     this.setState({error: res.error.message})
                 } else {
+                    const emotionData = res.faceAttributes.emotion
+                    const neutralVal = emotionData.neutral
+                    const emotion = {}
+                    for (const [key, val] of Object.entries(emotionData)) {
+                        if (key !== 'neutral') {
+                            emotion[key] = val / (1 - neutralVal)
+                        }
+                    }
                     this.setState({
                         error: '',
-                        emotion: res.faceAttributes.emotion,
+                        emotion,
                         analyzedPhoto: res.url
                     })
                 }
@@ -48,11 +61,17 @@ class HomePage extends React.Component {
     }
     //either display webcam or the photo that was taken
     renderPhotoDisplay() {
+        const { artists, tracks } = this.context
         const photo = this.state.photo
-        return !photo ?
-            <Camera
+        if (artists.length === 0 && tracks.length === 0) {
+            return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
+        } else {
+            return !photo ?
+            <div className='photo-booth'>
+                <Camera
                 onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
                 />
+            </div>
             :
             <div className='current-img'>
                 <div className='hidden'/>
@@ -63,25 +82,35 @@ class HomePage extends React.Component {
                 <button className='analyze-img' onClick={() => this.analyzePhoto()}>Analyze</button>
                 <button className='delete-img' onClick={() => this.deletePhoto()}>Delete</button>
             </div>
+        }
     }
-    renderView() {
-        return Object.keys(this.state.emotion).length > 0 ?
+    renderView(context) {
+        if (Object.keys({}) > 0) {
+            return <Entry />
+        } else {
+            return Object.keys(this.state.emotion).length > 0 ?
             <Results 
                 emotion={this.state.emotion} 
-                photo={this.state.analyzedPhoto}/>
+                photo={this.state.analyzedPhoto}
+                />
             :
             <div className="camera">
+                <h2>Mood</h2>
                 {this.renderPhotoDisplay()}
             </div>
+        }
     }
     render() {
+        const context = this.context
         return (
             <section className='camera-page'>
-                {this.renderView()}
+                {this.renderView(context)}
             </section>
             
         )
     }
 }
+
+HomePage.contextType = AppContext
 
 export default HomePage
