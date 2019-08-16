@@ -39,20 +39,24 @@ class App extends React.Component {
   setEntry(entry) {
     this.setState({entry})
   }
+  renderUserNav() {
+    return (
+      <nav className="navigation">
+        <div className='nav-start'>FaceJams</div>
+        <div className='nav-mid'>
+          <Link to='/'>Home</Link>
+          <Link to='/calendar'>Calendar</Link>
+          <Link to='/vibes'>Preferences</Link>
+        </div>
+        <div className='nav-end'>
+          <Link to='/login' onClick={() => this.logout()}>Logout</Link>
+        </div>
+      </nav>
+    )
+  }
   renderUser() {
     return (
       <div className="App">
-        <nav className="navigation">
-          <div className='nav-start'>FaceJams</div>
-          <div className='nav-mid'>
-            <Link to='/'>Home</Link>
-            <Link to='/calendar'>Calendar</Link>
-            <Link to='/vibes'>Preferences</Link>
-          </div>
-          <div className='nav-end'>
-            <Link to='/login' onClick={() => this.logout()}>Logout</Link>
-          </div>
-        </nav>
         <section className="main">
           <Route exact path='/' component={HomePage}/>
           <Route path='/vibes' component={Preferences}/>
@@ -61,16 +65,20 @@ class App extends React.Component {
       </div>
     )
   }
+  renderNonNav() {
+    return (
+      <nav className="navigation">
+        <div className='nav-start'>FaceJams</div>
+        <div className='nav-end'>
+          <Link to='/login'>Login</Link>
+          <Link to='/register'>Register</Link>
+        </div>
+      </nav>
+    )
+  }
   renderNonUser() {
     return (
       <div className="App">
-        <nav className="navigation">
-          <div className='nav-start'>FaceJams</div>
-          <div className='nav-end'>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
-          </div>
-        </nav>
         <section className="main">
           <Route exact path='/' component={LandingPage}/>
           <Route path='/login' component={LoginPage}/>
@@ -79,25 +87,24 @@ class App extends React.Component {
       </div>
     )
   }
-  view() {
-    return TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
-  }
   render() {
+    const nav = TokenService.hasAuthToken() ? this.renderUserNav() : this.renderNonNav()
+    const view = TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
     const contextValue = {
       setEntry: (entry) => this.setEntry(entry),
+      rerender: () => this.rerender(),
       entry: this.state.entry,
       artists: this.state.artists,
       tracks: this.state.tracks,
-      logged: false
+      logged: false,
     }
     return (
       <AppContext.Provider value={contextValue}>
         <div className='view'>
-          {this.view()}
+          {nav}
+          {view}
         </div>
       </AppContext.Provider>
-      
-        
       )
   }
   

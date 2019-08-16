@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
+import AppContext from '../../AppContext';
 
 class LoginPage extends Component {
   static defaultProps = {
@@ -14,7 +15,7 @@ class LoginPage extends Component {
     const destination = (location.state || {}).from || '/'
 
     history.push(destination)
-    console.log(destination)
+    this.context.rerender()
   }
 
   render() {
@@ -28,5 +29,7 @@ class LoginPage extends Component {
     )
   }
 }
+
+LoginPage.contextType = AppContext
 
 export default LoginPage

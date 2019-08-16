@@ -34,7 +34,14 @@ class Results extends React.Component {
     saveEntry(track) {
         const { notes, photo, emotions } = this.state
         ServerApiService.saveEntry(notes, photo, track, emotions)
+<<<<<<< HEAD
             .then(entry => this.context.setEntry(entry))
+=======
+            .then(entry => {
+                this.context.setEntry(entry)
+                alert('entry saved, please see calendar')
+            })
+>>>>>>> login
         this.setState({chosenTrack: track})
 
     }
