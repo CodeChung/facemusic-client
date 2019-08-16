@@ -2,6 +2,7 @@ import React from 'react'
 import ServerApiService from '../../services/server-api-service'
 import Track from '../Track/Track';
 import Donut from '../Donut/Donut'
+import AppContext from '../../AppContext';
 
 class Results extends React.Component {
     constructor(props) {
@@ -34,7 +35,10 @@ class Results extends React.Component {
     saveEntry(track) {
         const { notes, photo, emotions } = this.state
         ServerApiService.saveEntry(notes, photo, track, emotions)
-            .then(entry => {console.log(entry); this.context.setEntry(entry)})
+            .then(entry => {
+                this.context.setEntry(entry)
+                alert('entry saved, please see calendar')
+            })
         this.setState({chosenTrack: track})
 
     }
@@ -53,7 +57,7 @@ class Results extends React.Component {
                         message='Listen'/>
                     </a>
                     <button
-                        onClick={() => console.log('cheese')}>
+                        onClick={() => this.saveEntry(track)}>
                         Save
                     </button>
                 </div>
@@ -83,5 +87,7 @@ class Results extends React.Component {
         )
     }
 }
+
+Results.contextType = AppContext
 
 export default Results
