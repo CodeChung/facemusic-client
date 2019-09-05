@@ -205,6 +205,11 @@ main {
 }
 
 @media(max-width:768px){
+  .calendar {
+    width: 95%;
+    height: auto;
+  }
+
   .calendar .calendar-thumbnail {
     width: 100%;
     height: auto;
@@ -214,5 +219,11 @@ main {
   }
   .col-center {
     font-size: 10px;
+  }
+  .calendar .header {
+    padding:5px;
+  }
+  .calendar .header .icon {
+    font-size: 8px;
   }
 }

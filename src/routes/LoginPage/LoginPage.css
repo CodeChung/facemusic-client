@@ -1,7 +1,7 @@
 .LoginPage {
     height: 70%;
     margin: 0 auto;
-    width: 25%;
+    width: 40%;
 }
 
 .LoginPage h2 {
@@ -44,3 +44,9 @@
 .LoginForm button:active {
     background-color: rgb(163, 163, 163);
 }
+
+@media(max-width:768px){
+    .LoginPage {
+        width: 70%;
+    }
+  }

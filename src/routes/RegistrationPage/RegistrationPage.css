@@ -1,7 +1,7 @@
 .registration-page {
     height: 70%;
     margin: 0 auto;
-    width: 25%;
+    width: 40%;
 }
 
 .registration-page h2 {
@@ -43,4 +43,10 @@
 
 .registration-form button:active {
     background-color: rgb(163, 163, 163);
+}
+
+@media(max-width:768px){
+    .registration-page {
+        width: 70%;
+    }
 }

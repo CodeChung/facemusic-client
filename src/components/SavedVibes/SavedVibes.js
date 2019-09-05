@@ -74,12 +74,25 @@ class SavedVibes extends React.Component {
             </div>
     }
     render() {
+        const active = 'seed-active'
         return (
             <section className='saved-vibes'>
                 <nav className='seed-toggle'>
                     <ul>
-                        <li><button onClick={() => this.clickView('artists')}>Artists</button></li>
-                        <li><button onClick={() => this.clickView('tracks')}>Tracks</button></li>
+                        <li>
+                            <button 
+                                className={this.state.view === 'artists' ? active : ''}
+                                onClick={() => this.clickView('artists')}>
+                                Artists
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className={this.state.view === 'tracks' ? active : ''}
+                                onClick={() => this.clickView('tracks')}>
+                                Tracks
+                            </button>
+                        </li>
                     </ul>
                 </nav>
                 <br/>

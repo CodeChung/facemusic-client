@@ -31,6 +31,8 @@
     margin: 20px auto;
     border-radius: 20px;
     padding: 10px 0;
+    font-weight: 800;
+    font-size: 15px;
 }
 
 .landing-main button:focus {
@@ -41,10 +43,28 @@
     text-align: left;
     float: left;
     padding: 0 40px;
+    height: 100%;
 }
 
 .LandingPage img {
     float: right;
-    height: calc(90vh - 97px);
+    max-height: calc(90vh - 20vh);
+    max-width: 40%;
     margin-left: auto;
+    border-radius: 5px;
+}
+
+@media(max-width:1250px){
+    .LandingPage img {
+        text-align: center;
+        float: none;
+        transform: rotate(90deg)
+    }
+    .landing-desc {
+        text-align: center;
+    }
+}
+
+@media(max-width:768px){
+    
 }

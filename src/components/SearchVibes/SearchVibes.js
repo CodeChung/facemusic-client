@@ -80,6 +80,7 @@ class SearchVibes extends React.Component {
             </div>
     }
     render() {
+        const active = 'seed-active'
         return (
             <section className='search-vibes'>
                 <form className='add-vibe' onSubmit={event => this.handleSearch(event)}>
@@ -95,8 +96,20 @@ class SearchVibes extends React.Component {
                 </form>
                 <nav className='seed-toggle'>
                     <ul>
-                        <li><button onClick={() => this.clickView('artists')}>Artists</button></li>
-                        <li><button onClick={() => this.clickView('tracks')}>Tracks</button></li>
+                        <li>
+                            <button 
+                                className={this.state.view === 'artists' ? active : ''}
+                                onClick={() => this.clickView('artists')}>
+                                Artists
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className={this.state.view === 'tracks' ? active : ''}
+                                onClick={() => this.clickView('tracks')}>
+                                Tracks
+                            </button>
+                        </li>
                     </ul>
                 </nav>
                 {this.renderView()}

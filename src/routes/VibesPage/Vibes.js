@@ -5,14 +5,26 @@ import SearchVibes from '../../components/SearchVibes/SearchVibes'
 import './Vibes.css'
 
 class Preferences extends React.Component {
+    state = {
+        currentView: 'search'
+    }
     render() {
+        const current = this.state.currentView
         return (
             <section className='vibes'>
                 <div className='vibes-nav'>
-                    <ul>
-                        <li><Link to='/vibes/'>Find Vibes</Link></li>
-                        <li><Link to='/vibes/saved'>My Vibes</Link></li>
-                    </ul>
+                    <Link 
+                        to='/vibes/'
+                        onClick={() => this.setState({ currentView: 'search' })}
+                        className={current === 'search' ? 'active-vibe' : ''}>
+                        Find Vibes
+                    </Link>
+                    <Link 
+                        to='/vibes/saved'
+                        onClick={() => this.setState({ currentView: 'saved' })}
+                        className={current === 'saved' ? 'active-vibe' : ''}>
+                        My Vibes
+                    </Link>
                 </div>
                 <div className='vibes-main'>
                     <Route exact path='/vibes/' component={SearchVibes}/>
