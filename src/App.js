@@ -10,7 +10,8 @@ import ServerApiService from './services/server-api-service';
 import TokenService from './services/token-service'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import HomePage from './routes/HomePage/HomePage';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMusic } from '@fortawesome/free-solid-svg-icons';
 
 class App extends React.Component {
   constructor(props) {
@@ -42,9 +43,11 @@ class App extends React.Component {
   renderUserNav() {
     return (
       <nav className="navigation">
-        <div className='nav-start'>FaceJams</div>
+        <Link to='/' className='nav-start'>
+          <h1>FaceJams</h1>
+        </Link>
         <div className='nav-mid'>
-          <Link to='/'>Home</Link>
+          <Link to='/'>PhotoBooth</Link>
           <Link to='/calendar'>Calendar</Link>
           <Link to='/vibes'>Preferences</Link>
         </div>
@@ -68,7 +71,9 @@ class App extends React.Component {
   renderNonNav() {
     return (
       <nav className="navigation">
-        <div className='nav-start'>FaceJams</div>
+        <Link to='/' className='nav-start'>
+          <h1>FaceJams</h1>
+        </Link>
         <div className='nav-end'>
           <Link to='/login'>Login</Link>
           <Link to='/register'>Register</Link>
@@ -79,7 +84,7 @@ class App extends React.Component {
   renderNonUser() {
     return (
       <div className="App">
-        <section className="main">
+        <section className="main-new-user">
           <Route exact path='/' component={LandingPage}/>
           <Route path='/login' component={LoginPage}/>
           <Route path='/register' render={props => <RegistrationPage refresh={() => this.rerender()}/>}/>

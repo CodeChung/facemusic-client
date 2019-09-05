@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import AppContext from '../../AppContext';
+import './LoginPage.css';
 
 class LoginPage extends Component {
   static defaultProps = {

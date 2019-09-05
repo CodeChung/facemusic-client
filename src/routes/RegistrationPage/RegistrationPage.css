@@ -1,0 +1,46 @@
+.registration-page {
+    height: 70%;
+    margin: 0 auto;
+    width: 25%;
+}
+
+.registration-page h2 {
+    margin: 0;
+}
+
+.registration-form label {
+    display: none;
+}
+
+.registration-form input {
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: #F1FFFA;
+}
+
+.registration-form input {
+    margin: 15px 0;
+    width: 60%;
+    font-size: 20px;
+}
+
+.registration-form input:focus {
+    outline: none;
+}
+
+.registration-form button {
+    width: 30%;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+}
+
+.registration-form button:focus {
+    outline: none;
+}
+
+.registration-form button:active {
+    background-color: rgb(163, 163, 163);
+}

@@ -7,7 +7,7 @@ class LandingPage extends React.Component {
     render() {
         const view = TokenService.hasAuthToken() ? <HomePage/> : <LandingInfo/>
         return (
-            <div>
+            <div className='LandingPage'>
                 {view}
             </div>
         )

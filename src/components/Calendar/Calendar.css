@@ -69,9 +69,19 @@ main {
   display: block;
   position: relative;
   width: 75%;
-  background: var(--neutral-color);
-  border: 1px solid var(--border-color);
+  border: 0.5px solid #0D1F2D;
+  border-radius: 5px;
+  height: 80vh;
   margin: 0 auto;
+
+}
+
+.cal-header {
+  height: 15%;
+}
+
+.cal-body {
+  height: 85%;
 }
 
 .calendar .header {
@@ -88,7 +98,7 @@ main {
 }
 
 .calendar .header .icon:hover {
-  transform: scale(1.75);
+  transform: scale(1.05);
   transition: 0.25s ease-out;
   color: var(--main-color);
 }
@@ -101,6 +111,7 @@ main {
   margin-right: 1em;
 }
 
+
 .calendar .days {
   text-transform: uppercase;
   font-weight: 400;
@@ -108,6 +119,10 @@ main {
   font-size: 70%;
   padding: 0.75em 0;
   border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body {
+  height: 100% !important;
 }
 
 .calendar .body .cell {
@@ -133,6 +148,7 @@ main {
 
 .calendar .body .row {
   border-bottom: 1px solid var(--border-color);
+  height: calc(100% / 5);
 }
 
 .calendar .body .row:last-child {

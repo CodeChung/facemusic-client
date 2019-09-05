@@ -4,6 +4,7 @@ import 'react-html5-camera-photo/build/css/index.css';
 import Results from '../../components/Results/Results'
 import './HomePage.css'
 import ServerApiService from '../../services/server-api-service';
+import { MoonLoader } from 'react-spinners';
 import Entry from '../../components/Entry/Entry';
 import AppContext from '../../AppContext';
 
@@ -17,15 +18,21 @@ class HomePage extends React.Component {
             emotion: {},
             entry: {},
             artistSeeds: [],
-            trackSeeds: []
+            trackSeeds: [],
+            artists: [],
+            tracks: [],
+            loaded: false
         }
+    }
+    componentDidMount() {
+        ServerApiService.getSavedSeeds()
+          .then(res => {
+            const { tracks, artists } = res
+            this.setState({ tracks, artists, loaded: true })
+          })
     }
     onTakePhoto(dataUri) {
         this.setState({photo: dataUri})
-    }
-    //sets current key to the clicked photo and renders the image on main display
-    onClickPhoto(imgKey) {
-        this.setState({current: Number(imgKey)})
     }
     deletePhoto() {
         this.setState({
@@ -61,7 +68,7 @@ class HomePage extends React.Component {
     }
     //either display webcam or the photo that was taken
     renderPhotoDisplay() {
-        const { artists, tracks } = this.context
+        const { artists, tracks } = this.state
         const photo = this.state.photo
         if (artists.length === 0 && tracks.length === 0) {
             return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
@@ -95,13 +102,20 @@ class HomePage extends React.Component {
                 />
             :
             <div className="camera">
-                <h2>Mood</h2>
+                <h2>Today's Mood</h2>
                 {this.renderPhotoDisplay()}
             </div>
         }
     }
     render() {
         const context = this.context
+        if (!this.state.loaded) {
+            return (
+                <section className='spinner'>
+                    <MoonLoader />
+                </section>
+            )
+        }
         return (
             <section className='camera-page'>
                 {this.renderView(context)}

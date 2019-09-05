@@ -44,6 +44,7 @@ class RegistrationForm extends Component {
             User name
           </label>
           <input
+            placeholder='username'
             name='user_name'
             type='text'
             required
@@ -55,6 +56,7 @@ class RegistrationForm extends Component {
             Password
           </label>
           <input
+            placeholder='password'
             name='password'
             type='password'
             required

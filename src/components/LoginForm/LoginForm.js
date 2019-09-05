@@ -24,6 +24,7 @@ export default class LoginForm extends Component {
         TokenService.saveAuthToken(res.authToken)
         this.props.onLoginSuccess()
       })
+      .catch(res => alert(res.error))
   }
   render() {
     const { error } = this.state
@@ -41,6 +42,7 @@ export default class LoginForm extends Component {
           </label>
           <input
             required
+            placeholder='username'
             name='user_name'
             id='LoginForm__user_name'>
           </input>
@@ -51,6 +53,7 @@ export default class LoginForm extends Component {
           </label>
           <input
             required
+            placeholder='password'
             name='password'
             type='password'
             id='LoginForm__password'>

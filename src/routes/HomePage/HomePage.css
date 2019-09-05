@@ -45,9 +45,8 @@
     padding: 5px;
 }
 
-.photo-carousel {
-    width: 100%;
-    overflow: scroll;
+.photo-booth video {
+    border-radius: 10px;
 }
 
 .recommendation-list {
@@ -60,6 +59,12 @@
 a {
     text-decoration: none;
     color: black;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media(max-width:768px){

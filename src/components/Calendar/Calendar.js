@@ -116,9 +116,13 @@ class Calendar extends React.Component {
   render() {
     return (
       <div className="calendar">
-        {this.renderHeader()}
-        {this.renderDays()}
-        {this.renderCells()}
+        <div className='cal-header'>
+          {this.renderHeader()}
+          {this.renderDays()}
+        </div>
+        <div className='cal-body'>
+          {this.renderCells()}
+        </div>
       </div>
     );
   }
