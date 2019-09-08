@@ -23,7 +23,6 @@ class SearchVibes extends React.Component {
         ServerApiService.getSpotifySearch(keyword)
             .then(result => {
                 const { artists, tracks } = result
-                console.log(artists, tracks)
                 this.setState({ artists, tracks })
             })
     }
@@ -32,7 +31,7 @@ class SearchVibes extends React.Component {
             return artist.id !== id})
         this.setState({artists})
         ServerApiService.saveArtist(name, id, img)
-            .then(res => console.log(res))
+            .then(res => res)
     }
     addTrack(name, id, img, artist, album) {
         const tracks = this.state.tracks.filter(track => track.id !== id)

@@ -44,26 +44,24 @@ class HomePage extends React.Component {
     analyzePhoto() {
         const photoData = this.state.photo
         const body = JSON.stringify({img: photoData})
-    
         ServerApiService.convertPhotoToEmotion(body)
             .then(res => {
-                if (res.error) {
-                    this.setState({error: res.error.message})
-                } else {
-                    const emotionData = res.faceAttributes.emotion
-                    const neutralVal = emotionData.neutral
-                    const emotion = {}
-                    for (const [key, val] of Object.entries(emotionData)) {
-                        if (key !== 'neutral') {
-                            emotion[key] = val / (1 - neutralVal)
-                        }
+                const emotionData = res.faceAttributes.emotion
+                const neutralVal = emotionData.neutral
+                const emotion = {}
+                for (const [key, val] of Object.entries(emotionData)) {
+                    if (key !== 'neutral') {
+                        emotion[key] = val / (1 - neutralVal)
                     }
-                    this.setState({
-                        error: '',
-                        emotion,
-                        analyzedPhoto: res.url
-                    })
                 }
+                this.setState({
+                    error: '',
+                    emotion,
+                    analyzedPhoto: res.url
+                })
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
             })
     }
     //either display webcam or the photo that was taken
@@ -81,7 +79,7 @@ class HomePage extends React.Component {
             </div>
             :
             <div className='current-img'>
-                <div className='hidden'/>
+                {/* <div className='hidden'/> */}
                 <img
                     width={768}
                     src={photo}

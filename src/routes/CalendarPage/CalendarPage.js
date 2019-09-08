@@ -14,7 +14,6 @@ class CalendarPage extends React.Component {
     }
     handleClickDay(currentDay) {
         this.setState({currentDay})
-        console.log(currentDay)
     }
     resetCalendar() {
         this.setState({currentDay: ''})

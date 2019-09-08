@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage Component renders as expected 1`] = `
+<div
+  className="LandingPage"
+>
+  <LandingInfo />
+</div>
+`;

@@ -13,7 +13,7 @@ function LandingInfo() {
                 <p>Use it to keep track of your moods, find music you like, and look back at memories.</p>
                 <Link to='/register'><button>Check it out</button></Link>
             </div>
-            <img src='/images/heaphones.jpg' alt='headphones'/>
+            <img src='https://cdn.stocksnap.io/img-thumbs/960w/1IXTRXOWOE.jpg' alt='headphones'/>
         </section>
     )
 }

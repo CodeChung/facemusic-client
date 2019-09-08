@@ -5,6 +5,10 @@
     margin: 0 auto;
 }
 
+.camera-page, .calendar-page {
+    background: #F1FFFA;
+}
+
 .current-img {
     width: 768px;
     height: auto;
@@ -15,28 +19,62 @@
 .current-img img {
     width: 100%;
     height: auto;
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: 1;
+}
+
+.current-img button {
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 2.5px;
+    background-color: white;
+    box-shadow: 0 !important;
+}
+
+.current-img button:hover {
+    background: black;
+    border: white;
+    color: white;
+    outline: none;
 }
 
 .current-img .analyze-img {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 20px;
+    bottom: 10px;
     z-index: 100;
 }
 
 .current-img .delete-img {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 20px;
+    bottom: 10px;
     z-index: 100;
 }
 
 .emotion-graph {
     border-radius: 50px;
+}
+
+.emotion-graph img {
+    margin-bottom: 30px;
+}
+
+.emotion-graph form {
+    padding: 15px;
+}
+
+.emotion-graph textarea {
+    width: 50%;
+    border-radius: 5px;
+    height: 30vh;
+    padding: 5px;
+}
+
+.emotion-graph textarea:focus {
+    outline: none;
 }
 
 .hidden {
@@ -67,15 +105,15 @@ a {
     align-items: center;
 }
 
+.warning {
+    z-index: 100;
+}
+
 @media(max-width:768px){
     .current-img {
         width: 100%;
     }
     .emotion-graph img {
-        width: 100%;
+        width: 80%;
     }
-}
-
-.warning {
-    z-index: 100;
 }

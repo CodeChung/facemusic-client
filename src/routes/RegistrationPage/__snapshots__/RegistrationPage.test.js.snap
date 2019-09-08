@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationPage Component displays a valid RegistrationPage 1`] = `
+<section
+  className="registration-page"
+>
+  <h2>
+    Register
+  </h2>
+  <RegistrationForm
+    onRegistrationSuccess={[Function]}
+  />
+</section>
+`;

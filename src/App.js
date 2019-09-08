@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import LandingPage from './routes/LandingPage/LandingPage';
 import CalendarPage from './routes/CalendarPage/CalendarPage';
 import Preferences from './routes/VibesPage/Vibes';
@@ -10,8 +10,6 @@ import ServerApiService from './services/server-api-service';
 import TokenService from './services/token-service'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import HomePage from './routes/HomePage/HomePage';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic } from '@fortawesome/free-solid-svg-icons';
 
 class App extends React.Component {
   constructor(props) {
@@ -104,12 +102,14 @@ class App extends React.Component {
       logged: false,
     }
     return (
-      <AppContext.Provider value={contextValue}>
-        <div className='view'>
-          {nav}
-          {view}
-        </div>
-      </AppContext.Provider>
+      <BrowserRouter>
+        <AppContext.Provider value={contextValue}>
+          <div className='view'>
+            {nav}
+            {view}
+          </div>
+        </AppContext.Provider>
+      </BrowserRouter>
       )
   }
   

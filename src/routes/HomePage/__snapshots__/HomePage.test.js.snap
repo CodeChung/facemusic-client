@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Component renders camera after componentDidMount 1`] = `
+<HomePage>
+  <section
+    className="spinner"
+  >
+    <Loader
+      color="#000000"
+      css={Object {}}
+      loading={true}
+      size={60}
+      sizeUnit="px"
+    >
+      <EmotionCssPropInternal
+        __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+        css={
+          Array [
+            Object {
+              "map": undefined,
+              "name": "so5deu",
+              "next": Object {
+                "name": "animation-12jek8e",
+                "next": undefined,
+                "styles": "@keyframes animation-12jek8e{
+  100% {transform: rotate(360deg)}
+}",
+              },
+              "styles": "
+      position: relative;
+      width: 77.14285714285714px;
+      height: 77.14285714285714px;
+      animation: animation-12jek8e 0.6s 0s infinite linear;
+      animation-fill-mode: forwards;
+    ",
+            },
+            Object {},
+          ]
+        }
+      >
+        <div
+          className="css-so5deu"
+        >
+          <EmotionCssPropInternal
+            __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+            css={
+              Object {
+                "map": undefined,
+                "name": "1nbccn9",
+                "next": Object {
+                  "name": "animation-12jek8e",
+                  "next": undefined,
+                  "styles": "@keyframes animation-12jek8e{
+  100% {transform: rotate(360deg)}
+}",
+                },
+                "styles": "
+      
+      width: 8.571428571428571px;
+      height: 8.571428571428571px;
+      border-radius: 100%;
+    ;
+      background-color: #000000;
+      opacity: 0.8;
+      position: absolute;
+      top: 25.714285714285715px;
+      animation: animation-12jek8e 0.6s 0s infinite linear;
+      animation-fill-mode: forwards;
+    ",
+              }
+            }
+          >
+            <div
+              className="css-1nbccn9"
+            />
+          </EmotionCssPropInternal>
+          <EmotionCssPropInternal
+            __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+            css={
+              Object {
+                "map": undefined,
+                "name": "5m0nb3",
+                "next": undefined,
+                "styles": "
+      
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+    ;
+      border: 8.571428571428571px solid #000000;
+      opacity: 0.1;
+    ",
+              }
+            }
+          >
+            <div
+              className="css-5m0nb3"
+            />
+          </EmotionCssPropInternal>
+        </div>
+      </EmotionCssPropInternal>
+    </Loader>
+  </section>
+</HomePage>
+`;
+
+exports[`HomePage Component renders loading given no props 1`] = `
+<section
+  className="spinner"
+>
+  <Loader
+    color="#000000"
+    css={Object {}}
+    loading={true}
+    size={60}
+    sizeUnit="px"
+  />
+</section>
+`;
