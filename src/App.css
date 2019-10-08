@@ -64,7 +64,7 @@
 
 .nav-start:hover,
 .nav-start:active {
-  background: greenyellow;
+  background: #D0FFFD
 }
 
 .nav-mid a {
@@ -74,7 +74,7 @@
 
 .nav-mid a:hover,
 .nav-mid a:active {
-  background: greenyellow;
+  background: #D0FFFD
 }
 
 .nav-end a {
@@ -84,7 +84,7 @@
 
 .nav-end a:hover,
 .nav-end a:active {
-  background: greenyellow;
+  background: #D0FFFD
 }
 
 @media(max-width:768px){
