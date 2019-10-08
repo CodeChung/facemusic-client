@@ -25,10 +25,15 @@
     color: thistle;
 }
 
+.entry-face button {
+    position: relative;
+    top: 10px;
+}
+
 .entry-graph {
     box-sizing: border-box;
     background: #1A1916;
-    width: 55%;
+    width: 55%; 
 }
 
 .entry-graph .donut {
@@ -61,7 +66,8 @@
 
 .entry iframe {
     width: 50vh;
-    /* height: 80px; */
+    padding-top: 10px;
+    height: 80px;
     border-radius: 0 0 5px 5px;
 }
 

@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "alias": "codechung-bookmarks-app",
+    "alias": "codechung-facejams-app",
     "name": "facejams-app",
     "routes": [
         {

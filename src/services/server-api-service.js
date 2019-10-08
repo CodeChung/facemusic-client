@@ -46,12 +46,11 @@ const ServerApiService = {
             method: 'POST',
             body: track
         })
-            .then(res => {
-                if (!res.ok) {
-                    return {error: 'Something went wrong, try again.'}
-                }
-                return res.json()
-            })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
     },
     saveArtist(name, id, img) {
         const artist = JSON.stringify({name, id, img})
@@ -64,13 +63,27 @@ const ServerApiService = {
             method: 'POST',
             body: artist
         })
-            .then(res => {
-                if (!res.ok) {
-                    return {error: 'Something went wrong, try again.'}
-                }
-                return res.json()
-            })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
             
+    },
+    deleteEntry(entryId) {
+        return fetch(`${config.API_ENDPOINT}/entries/${entryId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'type': 'artist',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+            method: 'DELETE',
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
+            )
     },
     deleteSeed(type, id) {
         const seed = JSON.stringify({id})
@@ -83,12 +96,11 @@ const ServerApiService = {
             method: 'DELETE',
             body: seed
         })
-            .then(res => {
-                if (!res.ok) {
-                    return {error: 'Something went wrong, try again.'}
-                }
-                return res.json()
-            })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
     },
     getRecommendations(emotions) {
         const emotionJson = JSON.stringify(emotions)
@@ -100,11 +112,11 @@ const ServerApiService = {
             method: 'POST',
             body: emotionJson
         })
-            .then(res =>
-                (!res.ok)
+        .then(res =>
+            (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+        )
     },
     saveEntry(notes, img, song, emotions) {
         //insert to emotions table; return emotions id save into entries table;

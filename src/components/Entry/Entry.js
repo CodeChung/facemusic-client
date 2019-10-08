@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointLeft } from '@fortawesome/free-solid-svg-icons';
 import './Entry.css'
 import moment from 'moment';
+import ServerApiService from '../../services/server-api-service';
 
 const Image = styled.div`
     background-image: url(${props => props.img}) ;
@@ -20,7 +21,9 @@ const Image = styled.div`
 
 class Entry extends React.Component {
     state = {
-        emotions: {}
+        emotions: {},
+        deleteError: '',
+        deleteModal: false,
     }
     componentDidMount() {
         if (this.props.entry) {
@@ -30,8 +33,36 @@ class Entry extends React.Component {
             this.setState({emotions})
         }
     }
+    toggleDelete = event => {
+        const {deleteModal} = this.state
+        this.setState({
+            deleteModal: !deleteModal
+        })
+    }
+    deleteEntry = event => {
+        if (this.props.entry) {
+            ServerApiService.deleteEntry(this.props.entry.id)
+                .then(res => this.props.resetCalendar())
+                .catch(res => this.setState({ deleteError: res.message }))
+        }
+    }
     render() {
+        const { deleteError, deleteModal } = this.state
         const url = this.props.entry ? this.props.entry.song.url.replace('track', 'embed/track') : ''
+        
+        if (deleteModal) {
+            return (
+                <section className='entry-view'>
+                    <div className='entry-delete-modal'>
+                        <h2>Are you sure?</h2>
+                        {deleteError}
+                        <button onClick={this.deleteEntry}>Yes</button>
+                        <button onClick={this.toggleDelete}>No</button>
+                    </div>
+                </section>
+            )
+        }
+
         return (
             <section className='entry-view'>
                 {this.props.calendar && <FontAwesomeIcon className='calendar-back-arrow' icon={faHandPointLeft} onClick={() => this.props.resetCalendar()} />}
@@ -40,6 +71,7 @@ class Entry extends React.Component {
                         <h2>{this.props.entry && moment(this.props.entry.last_logged).format('MMM DD, YYYY')}</h2>
                         <Image img={this.props.entry ? this.props.entry.img : ''} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <button onClick={this.toggleDelete}>Delete</button>
                     </div>
                     <div className='entry-graph'>
                         <div className='donut'>
