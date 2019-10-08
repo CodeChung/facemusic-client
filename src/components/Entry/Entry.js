@@ -8,18 +8,20 @@ class Entry extends React.Component {
         emotions: {}
     }
     componentDidMount() {
-        const {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise} = this.props.entry
-        const emotions = {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise}
-        
-        this.setState({emotions})
+        if (this.props.entry) {
+            const {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise} = this.props.entry
+            const emotions = {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise}
+            
+            this.setState({emotions})
+        }
     }
     render() {
-        const url = this.props.entry.song.url.replace('track', 'embed/track')
+        const url = this.props.entry ? this.props.entry.song.url.replace('track', 'embed/track') : ''
         return (
             <div>
                 {this.props.calendar && <button onClick={() => this.props.resetCalendar()}>Return to Calendar</button>}
                 <div className='entry'>
-                    <img src={this.props.entry.img} alt='daily face'/>
+                    {this.props.entry && <img src={this.props.entry.img} alt='daily face'/>}
                     <div className='donut'>
                         {/* <h3>Emotional Analysis</h3> */}
                         <Donut emotions={this.state.emotions}/>
@@ -29,7 +31,7 @@ class Entry extends React.Component {
                 </div>
                 <div className='entry-notes'>
                     <h3>Notes:</h3>
-                    {this.props.entry.notes}
+                    {this.props.entry && this.props.entry.notes}
                 </div>
             </div>
         )

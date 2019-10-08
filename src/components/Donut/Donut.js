@@ -20,7 +20,7 @@ class Donut extends React.Component {
     getData() {
         // QUESTION ASK why cant i setstate in componentdidmount? but it works in entry.js????
         //convert emotions data into format that doughnut specifies
-        const emotions = this.props.emotions
+        const emotions = this.props.emotions || {}
         const labels = []
         const data = []
         const backgroundColor = []

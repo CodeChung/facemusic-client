@@ -65,7 +65,7 @@ class Calendar extends React.Component {
         const cloneDay = day;
         const dayKey = day.toString().slice(0,15)
 
-        const img = (this.props.entries[dayKey] || {}).img
+        const imgData = this.props.entries ? this.props.entries[dayKey] : {}
 
         days.push(
           <div
@@ -77,7 +77,7 @@ class Calendar extends React.Component {
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-            {img && <img className='calendar-thumbnail' src={img} alt='face for the day'/>}
+            {imgData && <img className='calendar-thumbnail' src={imgData.img} alt='face for the day'/>}
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
