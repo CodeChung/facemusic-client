@@ -55,6 +55,7 @@
   padding-left: 15px;
   font-size: 15px;
   margin: 0;
+  transition: .3s;
 }
 
 .nav-start h1 {
@@ -62,12 +63,26 @@
   font-weight: 400;
 }
 
+.nav-start:active {
+  background: greenyellow;
+}
+
 .nav-mid a {
   margin: 0 2px;
+  transition: .3s;
+}
+
+.nav-mid a:active {
+  background: greenyellow;
 }
 
 .nav-end a {
   margin: 0 2px;
+  transition: .3s;
+}
+
+.nav-end a:active {
+  background: greenyellow;
 }
 
 @media(max-width:768px){
