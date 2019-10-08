@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointLeft } from '@fortawesome/free-solid-svg-icons';
 import './Entry.css'
+import moment from 'moment';
 
 const Image = styled.div`
     background-image: url(${props => props.img}) ;
@@ -14,8 +15,7 @@ const Image = styled.div`
     background-size: cover;
     width: 50vh;
     height: 50vh;
-    border: 5px solid #1A1916;
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px
 `
 
 class Entry extends React.Component {
@@ -37,6 +37,7 @@ class Entry extends React.Component {
                 {this.props.calendar && <FontAwesomeIcon className='calendar-back-arrow' icon={faHandPointLeft} onClick={() => this.props.resetCalendar()} />}
                 <div className='entry'>
                     <div className='entry-face'>
+                        <h2>{this.props.entry && moment(this.props.entry.last_logged).format('MMM DD, YYYY')}</h2>
                         <Image img={this.props.entry ? this.props.entry.img : ''} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>

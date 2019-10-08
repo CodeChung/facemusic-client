@@ -1,9 +1,9 @@
 .entry {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin: 0 auto;
     background: #1A1916;
-    width: 60%;
+    width: 65%;
     height: 80vh;
     overflow: hidden;
     position: relative;
@@ -12,18 +12,23 @@
 }
 
 .entry-face {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    width: 40%;
-    justify-content: space-around;
-    position: relative;
-    left: 25px;
+    width: 45%;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry-face h2 {
+    color: thistle;
 }
 
 .entry-graph {
+    box-sizing: border-box;
     background: #1A1916;
-    width: 60%;
+    width: 55%;
 }
 
 .entry-graph .donut {
@@ -48,8 +53,9 @@
     background: rgb(100, 100, 100);
     width: 80%;
     margin: 0 auto;
-    height: 200px;
+    height: 250px;
     text-align: left;
+    border-radius: 4px 4px 0 0;
     padding: 10px 0 0 15px;
 }
 

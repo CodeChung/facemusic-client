@@ -54,6 +54,7 @@
     display: flex;
     flex-flow: column;
     height: 90%;
+    margin-top: 5vh;
 }
 
 .vibes-nav {
