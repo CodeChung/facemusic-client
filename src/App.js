@@ -10,6 +10,7 @@ import ServerApiService from './services/server-api-service';
 import TokenService from './services/token-service'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import HomePage from './routes/HomePage/HomePage';
+import SearchVibes from './components/SearchVibes/SearchVibes';
 
 class App extends React.Component {
   constructor(props) {
@@ -91,8 +92,9 @@ class App extends React.Component {
     )
   }
   render() {
+    const { tracks, artists } = this.state
     const nav = TokenService.hasAuthToken() ? this.renderUserNav() : this.renderNonNav()
-    const view = TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
+    let view = TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
     const contextValue = {
       setEntry: (entry) => this.setEntry(entry),
       rerender: () => this.rerender(),
@@ -101,6 +103,7 @@ class App extends React.Component {
       tracks: this.state.tracks,
       logged: false,
     }
+
     return (
       <BrowserRouter>
         <AppContext.Provider value={contextValue}>

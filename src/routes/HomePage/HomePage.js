@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import Results from '../../components/Results/Results'
@@ -69,7 +70,8 @@ class HomePage extends React.Component {
         const { artists, tracks } = this.state
         const photo = this.state.photo
         if (artists.length === 0 && tracks.length === 0) {
-            return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
+            return <Redirect to='/vibes' />
+            // return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
         } else {
             return !photo ?
             <div className='photo-booth'>
