@@ -1,19 +1,74 @@
 .entry {
     display: flex;
     justify-content: center;
-    
-}
-
-.entry img {
-    width: 40%;
-}
-
-.entry .donut {
-    width: 40%;
-}
-
-.donut iframe {
-    width: 90%;
-    height: 20%;
     margin: 0 auto;
+    background: #1A1916;
+    width: 60%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+    top: 5vh;
+    border-radius: 5px;
+}
+
+.entry-face {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 40%;
+    justify-content: space-around;
+    position: relative;
+    left: 25px;
+}
+
+.entry-graph {
+    background: #1A1916;
+    width: 60%;
+}
+
+.entry-graph .donut {
+    padding-top: 15px;
+    height: 50vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.donut h3 {
+    color: thistle;
+}
+
+.doughnut {
+    width: 100%;
+}
+
+.entry-notes {
+    background: rgb(100, 100, 100);
+    width: 80%;
+    margin: 0 auto;
+    height: 200px;
+    text-align: left;
+    padding: 10px 0 0 15px;
+}
+
+.entry iframe {
+    width: 50vh;
+    /* height: 80px; */
+    border-radius: 0 0 5px 5px;
+}
+
+.calendar-back-arrow {
+    position: absolute;
+    font-size: 40px;
+    left: 40px;
+    top: 15%;
+    transition: .4s ease-in-out
+}
+
+.calendar-back-arrow:hover,
+.calendar-back-arrow:active {
+    transform: translateX(-10px);
+    color: darkgray;
 }
