@@ -2,3 +2,8 @@
     border-radius: 25px;
     padding: 10px;
 }
+
+.camera-page .doughnut {
+    width: 80% !important;
+    margin: 0 auto;
+}
