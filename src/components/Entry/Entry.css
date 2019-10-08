@@ -84,3 +84,29 @@
     transform: translateX(-10px);
     color: darkgray;
 }
+
+@media(max-width:768px){
+    .calendar-back-arrow {
+        top: 60px;
+    }
+
+    .demo-page {
+        position: relative;
+        top: 30px;
+    }
+
+    .entry {
+        padding-top:400px;
+        width: 100%;
+        flex-direction: column;
+        overflow: scroll;
+        height: 100vh;
+    }
+    .entry-face {
+        overflow: visible;
+        width: 95%;
+    }
+    .entry-graph {
+        width: 95%;
+    }
+}
