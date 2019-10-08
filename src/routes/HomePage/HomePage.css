@@ -7,6 +7,7 @@
 
 .camera-page, .calendar-page {
     background: #F1FFFA;
+    margin-top: 5vh;
 }
 
 .current-img {
@@ -81,6 +82,10 @@
     visibility: hidden;
     height: 576px;
     padding: 5px;
+}
+
+.home-photo {
+    border-radius: 4px;
 }
 
 .photo-booth video {

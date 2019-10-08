@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import AuthApiService from '../../services/auth-api-service'
 import TokenService from '../../services/token-service';
+import styled from 'styled-components';
+import { BounceLoader } from 'react-spinners';
+
+const Loading = styled.div `
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  
+`
 
 export default class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {}
   }
 
-  state = { error: null }
+  state = { loading: false, error: null }
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
-    this.setState({ error: null })
+    this.setState({ loading: true, error: null })
     const { user_name, password } = ev.target
     
     AuthApiService.postLogin({
@@ -27,7 +36,8 @@ export default class LoginForm extends Component {
       .catch(res => alert(res.error))
   }
   render() {
-    const { error } = this.state
+    const { loading, error } = this.state
+
     return (
       <form
         className='LoginForm'
@@ -59,6 +69,7 @@ export default class LoginForm extends Component {
             id='LoginForm__password'>
           </input>
         </div>
+        {loading && <Loading><BounceLoader /></Loading>}
         <button type='submit'>
           Login
         </button>

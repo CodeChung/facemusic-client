@@ -22,7 +22,8 @@ class HomePage extends React.Component {
             trackSeeds: [],
             artists: [],
             tracks: [],
-            loaded: false
+            loading: false,
+            loaded: false,
         }
     }
     componentDidMount() {
@@ -43,6 +44,7 @@ class HomePage extends React.Component {
 
     }
     analyzePhoto() {
+        this.setState({ loading: true })
         const photoData = this.state.photo
         const body = JSON.stringify({img: photoData})
         ServerApiService.convertPhotoToEmotion(body)
@@ -58,29 +60,30 @@ class HomePage extends React.Component {
                 this.setState({
                     error: '',
                     emotion,
-                    analyzedPhoto: res.url
+                    analyzedPhoto: res.url,
+                    loading: false,
                 })
             })
             .catch(res => {
-                this.setState({ error: res.error })
+                this.setState({ error: res.error, loading: false })
             })
     }
     //either display webcam or the photo that was taken
     renderPhotoDisplay() {
-        const { artists, tracks } = this.state
+        const { artists, loading, tracks } = this.state
         const photo = this.state.photo
         if (artists.length === 0 && tracks.length === 0) {
             return <Redirect to='/vibes' />
             // return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
         } else {
             return !photo ?
-            <div className='photo-booth'>
+            <div className='home-photo photo-booth'>
                 <Camera
                 onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
                 />
             </div>
             :
-            <div className='current-img'>
+            <div className='home-photo current-img'>
                 {/* <div className='hidden'/> */}
                 <img
                     width={768}
@@ -88,6 +91,7 @@ class HomePage extends React.Component {
                     alt='current'/>
                 <button className='analyze-img' onClick={() => this.analyzePhoto()}>Analyze</button>
                 <button className='delete-img' onClick={() => this.deletePhoto()}>Delete</button>
+                {loading && <MoonLoader />}
             </div>
         }
     }

@@ -3,6 +3,8 @@ import ServerApiService from '../../services/server-api-service'
 import Track from '../Track/Track';
 import Donut from '../Donut/Donut'
 import AppContext from '../../AppContext';
+import { Redirect } from 'react-router-dom';
+import './Results.css';
 
 class Results extends React.Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class Results extends React.Component {
             tracks: [],
             chosenTrack: '',
             photo: '',
+            redirect: false,
         }
     }
     componentDidMount() {
@@ -36,12 +39,17 @@ class Results extends React.Component {
         ServerApiService.saveEntry(notes, photo, track, emotions)
             .then(entry => {
                 this.context.setEntry(entry)
-                alert('entry saved, please see calendar')
             })
-        this.setState({chosenTrack: track})
+        this.setState({chosenTrack: track, redirect: true })
 
     }
     render() {
+        const { redirect } = this.state
+        
+        if (redirect) {
+            return <Redirect to='/calendar' />
+        }
+
         const tracks = this.state.tracks.map((track, index) => {
             const { name, images, artist, album, url } = track
             const img = images.length > 0 ? images[0].url : 'https://www.placecage.com/280/280'
@@ -62,6 +70,7 @@ class Results extends React.Component {
                 </div>
             )
         })
+
         return (
             <div className='emotion-graph'>
                 <img src={this.state.photo} alt='journal face'/>
@@ -78,7 +87,7 @@ class Results extends React.Component {
                     <br/>
                     <button>Find Track</button>
                 </form>
-                {this.state.tracks && <h3>Recommendations</h3>}
+                {this.state.tracks.length && <h3>Recommendations</h3>}
                 <div className='recommendation-list'>
                     {tracks}
                 </div>

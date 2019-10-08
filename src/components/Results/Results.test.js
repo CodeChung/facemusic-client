@@ -4,6 +4,6 @@ import Results from './Results';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Results />, div);
+  ReactDOM.render(<BrowserRouter><Results /></BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
