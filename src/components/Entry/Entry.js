@@ -1,6 +1,6 @@
 import React from 'react'
-import Donut from '../Donut/Donut';
 import styled from 'styled-components';
+import Donut from '../Donut/Donut'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointLeft } from '@fortawesome/free-solid-svg-icons';
