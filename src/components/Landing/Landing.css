@@ -66,5 +66,7 @@
 }
 
 @media(max-width:768px){
-    
+    .landing-main h1 {
+        font-size: 20px;
+    }
 }

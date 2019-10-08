@@ -10,6 +10,7 @@ import ServerApiService from './services/server-api-service';
 import TokenService from './services/token-service'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage';
 import HomePage from './routes/HomePage/HomePage';
+import DemoPage from './routes/DemoPage/DemoPage';
 import SearchVibes from './components/SearchVibes/SearchVibes';
 
 class App extends React.Component {
@@ -87,6 +88,7 @@ class App extends React.Component {
           <Route exact path='/' component={LandingPage}/>
           <Route path='/login' component={LoginPage}/>
           <Route path='/register' render={props => <RegistrationPage refresh={() => this.rerender()}/>}/>
+          <Route path='/demo' component={DemoPage} />
         </section>
       </div>
     )
