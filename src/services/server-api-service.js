@@ -3,7 +3,6 @@ import TokenService from './token-service'
 
 const ServerApiService = {
     getSpotifySearch(keyword) {
-        //TODO implement header token authorization
         return fetch(`${config.API_ENDPOINT}/music/search/` + keyword)
             .then(res =>
                 (!res.ok)
