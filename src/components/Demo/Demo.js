@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 import Donut from '../../components/Donut/Donut';
 import styled from 'styled-components';
 import './Demo.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointLeft } from '@fortawesome/free-solid-svg-icons';
+import Camera from 'react-html5-camera-photo';
+import 'react-html5-camera-photo/build/css/index.css';
 import moment from 'moment';
 
 const Image = styled.div`
@@ -47,7 +47,8 @@ class Demo extends React.Component {
                         <h2>
                             {moment(new Date()).format('MMM DD, YYYY')}
                         </h2>
-                        <Image img={'https://www.placecage.com/757/1001'} />
+                        {/* <Image img={'https://www.placecage.com/757/1001'} /> */}
+                        <Camera />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"><span className='tooltiptext-left'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span></iframe>
                     </div>
                     <div className='entry-graph'>

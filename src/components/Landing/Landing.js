@@ -16,7 +16,7 @@ class LandingInfo extends React.Component {
     render() {
         return (
             <section className='landing-main'>
-                <section className='landing-desc'>
+                <section className='landing-desc' id='home'>
                     <h1>Facejams</h1>
                     <h4>It's time to listen to that face.</h4>
                     <a href='#demo'><button>Demo</button></a>
