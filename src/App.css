@@ -40,6 +40,10 @@
   color: rgb(40, 20, 58);
 }
 
+.non-user .navigation {
+  box-shadow: none;
+}
+
 .non-user .App, .non-user .landing-main {
   background: transparent;
 }

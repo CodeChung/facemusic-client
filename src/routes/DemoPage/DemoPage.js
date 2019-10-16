@@ -43,11 +43,12 @@ class DemoPage extends React.Component {
         return (
             <section className='demo-page'>
                 <div className='entry'>
-                    <div className='entry-face tooltip'>
-                        <span className='tooltiptext'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span>
-                        <h2>{moment(new Date()).format('MMM DD, YYYY')}</h2>
+                    <div className='entry-face'>
+                        <h2>
+                            {moment(new Date()).format('MMM DD, YYYY')}
+                        </h2>
                         <Image img={'https://snipboard.io/LYoEvV.jpg'} />
-                        <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"><span className='tooltiptext-left'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span></iframe>
                     </div>
                     <div className='entry-graph'>
                         <div className='donut'>
@@ -58,11 +59,14 @@ class DemoPage extends React.Component {
                             <h3>Notes:</h3>
                             <div className='demo-entry tooltip'
                                 contentEditable='true'>
-                                <span className='tooltiptext'>Use it to keep track of your moods, find music you like, and look back at memories.</span>
+                                <span className='tooltiptext'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span>
                                 Wow, what a day. I made bread for the first time. It was surprisingly good.
                                 <br/>
                                 <br/>
                                 What a real surprise.
+                                <br/>
+                                <br/>
+                                In other news, I realized that I forgot to turn off the stove. Luckily, the place was still intact when I got home.
                             </div>
                         </div>
                     </div>

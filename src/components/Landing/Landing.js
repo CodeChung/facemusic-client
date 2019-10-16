@@ -12,9 +12,12 @@ class LandingInfo extends React.Component {
                 </section>
                 <section className='landing-block'>
                     <div className='landing-block-text'>
-                        <h2>Facejams is a photojournal/playlist generator.</h2>
+                        <h2>Facejams is a photo album/playlist generator.</h2>
                     </div>
                     <DemoPage />
+                </section>
+                <section className='landing-block'>
+                    YOLO
                 </section>
             </section>
         )
