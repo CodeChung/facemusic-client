@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Karla|Rubik&display=swap');
+
 .App {
   text-align: center;
   background: #F1FFFA;
   height: calc(100vh - 77px);
+  font-family: 'Rubik', sans-serif;
 }
 
 .App-logo {
@@ -25,6 +28,26 @@
   color: #61dafb;
 }
 
+.non-user {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.05), 
+    rgba(0, 0, 0, 0.15)
+  ), url("/images/fallboy.jpg") no-repeat -40px -300px fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 150%;
+  color: rgb(40, 20, 58);
+}
+
+.non-user .App, .non-user .landing-main {
+  background: transparent;
+}
+
+.non-user .landing-main {
+  width: 69%;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -43,11 +66,17 @@
   height: 100%;
 }
 
+.non-nav {
+  background: transparent;
+  position: fixed;
+}
+
 .navigation a {
   padding: 15px;
   background: white;
   border-radius: 25px;
   padding: 5px;
+  font-family: 'Rubik', sans-serif;
 }
 
 .nav-start {

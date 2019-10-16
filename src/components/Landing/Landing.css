@@ -1,12 +1,9 @@
-.main-new-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+.App {
+    height: 100vh;
 }
 
 .LandingPage {
-    height: 100%;
+    height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;
@@ -15,6 +12,7 @@
 .landing-main {
     margin: 0 auto;
     background: #F1FFFA;
+    height: 100vh;
 }
 
 .landing-main h1 {
@@ -40,10 +38,21 @@
 }
 
 .landing-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: left;
-    float: left;
     padding: 0 40px;
-    height: 100%;
+    height: 100vh;
+}
+
+.landing-desc h1 {
+    font-size: 4.7em;
+    padding-top: 30px
+}
+
+.landing-desc h4 {
+    font-size: 1.8em;
 }
 
 .LandingPage img {

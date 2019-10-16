@@ -70,7 +70,7 @@ class App extends React.Component {
   }
   renderNonNav() {
     return (
-      <nav className="navigation">
+      <nav className="navigation non-nav">
         <Link to='/' className='nav-start'>
           <h1>FaceJams</h1>
         </Link>
@@ -94,9 +94,9 @@ class App extends React.Component {
     )
   }
   render() {
-    const { tracks, artists } = this.state
     const nav = TokenService.hasAuthToken() ? this.renderUserNav() : this.renderNonNav()
     let view = TokenService.hasAuthToken() ? this.renderUser() : this.renderNonUser()
+
     const contextValue = {
       setEntry: (entry) => this.setEntry(entry),
       rerender: () => this.rerender(),
@@ -106,10 +106,21 @@ class App extends React.Component {
       logged: false,
     }
 
-    return (
+    return TokenService.hasAuthToken() ? (
       <BrowserRouter>
         <AppContext.Provider value={contextValue}>
           <div className='view'>
+            {nav}
+            {view}
+          </div>
+        </AppContext.Provider>
+      </BrowserRouter>
+      )
+      :
+      (
+      <BrowserRouter>
+        <AppContext.Provider value={contextValue}>
+          <div className='view non-user'>
             {nav}
             {view}
           </div>
