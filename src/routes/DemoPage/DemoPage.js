@@ -13,8 +13,8 @@ const Image = styled.div`
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    width: 50vh;
-    height: 50vh;
+    width: 52vh;
+    height: 52vh;
     border-radius: 5px
 `
 
@@ -34,9 +34,6 @@ class DemoPage extends React.Component {
         entry: {},
         redirect: false,
     }
-    goBack() {
-        this.setState({ redirect: true })
-    }
     render() {
         const { entry, redirect } = this.state
         const url = 'https://open.spotify.com/embed/track/42zd6DYQ4o4SECmTITrM1U'
@@ -45,9 +42,9 @@ class DemoPage extends React.Component {
         }
         return (
             <section className='demo-page'>
-                <FontAwesomeIcon className='calendar-back-arrow' icon={faHandPointLeft} onClick={() => this.goBack()} />
                 <div className='entry'>
-                    <div className='entry-face'>
+                    <div className='entry-face tooltip'>
+                        <span className='tooltiptext'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span>
                         <h2>{moment(new Date()).format('MMM DD, YYYY')}</h2>
                         <Image img={'https://snipboard.io/LYoEvV.jpg'} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -59,10 +56,13 @@ class DemoPage extends React.Component {
                         </div>
                         <div className='entry-notes'>
                             <h3>Notes:</h3>
-                            <div className='demo-entry'
+                            <div className='demo-entry tooltip'
                                 contentEditable='true'>
-                                Wow, It's been a weird day. I almost got eaten by a bear.
-                                But I also got a free burger, so it kind of evens out.
+                                <span className='tooltiptext'>Use it to keep track of your moods, find music you like, and look back at memories.</span>
+                                Wow, what a day. I made bread for the first time. It was surprisingly good.
+                                <br/>
+                                <br/>
+                                What a real surprise.
                             </div>
                         </div>
                     </div>

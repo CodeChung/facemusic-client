@@ -1,3 +1,8 @@
+.demo-page {
+    padding: 0;
+    margin: 0;
+}
+
 .entry {
     display: flex;
     justify-content: center;
@@ -6,8 +11,6 @@
     width: 65%;
     height: 80vh;
     overflow: hidden;
-    position: relative;
-    top: 5vh;
     border-radius: 5px;
 }
 
@@ -17,12 +20,15 @@
     flex-direction: column;
     overflow: hidden;
     width: 45%;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    padding-left: 50px;
 }
 
 .entry-face h2 {
     color: thistle;
+    font-size: 2.8em;
+    margin: 0;
 }
 
 .entry-face button {
@@ -65,7 +71,7 @@
 }
 
 .entry iframe {
-    width: 50vh;
+    width: 52vh;
     padding-top: 10px;
     height: 80px;
     border-radius: 0 0 5px 5px;

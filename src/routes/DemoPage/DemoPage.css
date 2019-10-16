@@ -1,3 +1,38 @@
 .demo-entry {
     outline: none;
 }
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  opacity: 0;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 15px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  transition: .4s ease-in;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext, .tooltip:active .tooltiptext  {
+  opacity: 1;
+}

@@ -55,12 +55,26 @@
     font-size: 1.8em;
 }
 
-.LandingPage img {
-    float: right;
-    max-height: calc(90vh - 20vh);
-    max-width: 40%;
-    margin-left: auto;
-    border-radius: 5px;
+.landing-block {
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing-block .entry {
+    width: 100%;
+    height: auto;
+}
+
+.landing-block-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-block-text h2 {
+    margin-bottom: 20px;
 }
 
 @media(max-width:1250px){

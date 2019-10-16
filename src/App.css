@@ -32,7 +32,7 @@
   background: linear-gradient(
     rgba(0, 0, 0, 0.05), 
     rgba(0, 0, 0, 0.15)
-  ), url("/images/fallboy.jpg") no-repeat -40px -300px fixed; 
+  ), url("/images/fallboy.jpg") no-repeat -40px -280px fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -68,7 +68,13 @@
 
 .non-nav {
   background: transparent;
+  color: transparent;
   position: fixed;
+  transition: .3s ease-in-out;
+}
+
+.non-nav:hover {
+  background: rgb(27, 27, 27, .89);
 }
 
 .navigation a {
@@ -107,7 +113,8 @@
 }
 
 .nav-end a {
-  margin: 0 2px;
+  margin: 0 4px;
+  padding: 6px;
   transition: .3s;
 }
 
