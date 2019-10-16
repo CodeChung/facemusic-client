@@ -55,26 +55,86 @@
     font-size: 1.8em;
 }
 
+.landing-desc button {
+    margin: 0;
+    width: 150px;
+    border-radius: 5px;
+    border: 3px solid white;
+    background: transparent;
+    transition: .3s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.landing-desc button:hover, .landing-desc button:active {
+    background: white;
+}
+
 .landing-block {
-    height: 100vh;
+    height: 160vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #E07235;
+    position: relative;
+}
+
+.block-two {
+    justify-content: center;
+    background: black;
+    background-size: 100%;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    right: 0;
+    z-index: -100;
+    height: 100vh;
+}
+
+.block-two-text {
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.block-two-text a, .demo {
+    color: whitesmoke;
+    transition: .6s;
+}
+
+.block-two-text a:hover, .demo:hover {
+    font-size: 23px;
 }
 
 .landing-block .entry {
     width: 90%;
-    height: auto;
+    z-index: -100;
+}
+
+.landing-block img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 150px;
 }
 
 .landing-block-text {
     display: flex;
     flex-direction: column;
+    position: relative;
+    width: 100vw;
 }
 
 .landing-block-text h2 {
-    margin-bottom: 20px;
+    font-size: 34px;
+    padding-bottom: 30px;
+}
+
+.line {
+    border-left: 1px solid whitesmoke;
+    height: 150px;
 }
 
 @media(max-width:1250px){

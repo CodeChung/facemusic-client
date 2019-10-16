@@ -2,6 +2,13 @@
     height: 70%;
     margin: 0 auto;
     width: 40%;
+    background: #231F20;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+    color: whitesmoke;
 }
 
 .registration-page h2 {
@@ -22,6 +29,7 @@
     margin: 15px 0;
     width: 60%;
     font-size: 20px;
+    border-radius: 2px;
 }
 
 .registration-form input:focus {

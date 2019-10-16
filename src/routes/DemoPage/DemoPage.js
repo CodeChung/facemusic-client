@@ -63,10 +63,7 @@ class DemoPage extends React.Component {
                                 Wow, what a day. I made bread for the first time. It was surprisingly good.
                                 <br/>
                                 <br/>
-                                What a real surprise.
-                                <br/>
-                                <br/>
-                                In other news, I realized that I forgot to turn off the stove. Luckily, the place was still intact when I got home.
+                                What a real surprise. I was so surprised.
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,13 @@
     height: 70%;
     margin: 0 auto;
     width: 40%;
+    background: #231F20;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+    color: whitesmoke;
 }
 
 .LoginPage h2 {
@@ -16,6 +23,7 @@
     border: none;
     border-bottom: 1px solid gray;
     background-color: #F1FFFA;
+    border-radius: 2px;
 }
 
 .LoginForm input {
