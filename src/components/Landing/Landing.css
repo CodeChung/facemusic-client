@@ -91,12 +91,20 @@
     height: 100vh;
 }
 
+.block-two h3 {
+    color: whitesmoke;
+    font-size: 1.6em;
+    margin-bottom: 100px;
+}
+
 .block-two-text {
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200px;
+    position: relative;
+    left: 9px;
 }
 
 .block-two-text a, .demo {
@@ -105,7 +113,7 @@
 }
 
 .block-two-text a:hover, .demo:hover {
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .landing-block .entry {

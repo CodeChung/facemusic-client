@@ -93,7 +93,7 @@
 .navigation a {
   padding: 15px;
   background: white;
-  border-radius: 25px;
+  border-radius: 10px;
   padding: 5px;
   font-family: 'Rubik', sans-serif;
 }
@@ -112,7 +112,7 @@
 
 .nav-start:hover,
 .nav-start:active {
-  background: #D0FFFD
+  background: #7EBDC2
 }
 
 .nav-mid a {
@@ -122,18 +122,19 @@
 
 .nav-mid a:hover,
 .nav-mid a:active {
-  background: #D0FFFD
+  background: #7EBDC2
 }
 
 .nav-end a {
   margin: 0 4px;
   padding: 6px;
+  border-radius: 2.5px;
   transition: .3s;
 }
 
 .nav-end a:hover,
 .nav-end a:active {
-  background: #D0FFFD
+  background: rgb(188, 224, 223)
 }
 
 @media(max-width:768px){
