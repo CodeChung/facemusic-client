@@ -22,7 +22,7 @@ class LandingInfo extends React.Component {
                     <a href='#demo'><button>Demo</button></a>
                 </section>
                 <section className='landing-block'>
-                    <img src='/images/wave.png' alt='wave' />
+                    <img src='https://i.imgur.com/fPbJCAj.png' alt='wave' />
                     <div className='landing-block-text'>
                         <h2>Facejams is a photo album/playlist generator.</h2>
                     </div>
