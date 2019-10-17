@@ -46,9 +46,9 @@ class App extends React.Component {
           <h1>FaceJams</h1>
         </Link>
         <div className='nav-mid'>
-          <Link to='/'>PhotoBooth</Link>
+          <Link to='/'>Home</Link>
           <Link to='/calendar'>Calendar</Link>
-          <Link to='/vibes'>Preferences</Link>
+          <Link to='/seeds'>Seeds</Link>
         </div>
         <div className='nav-end'>
           <Link to='/login' onClick={() => this.logout()}>Logout</Link>
@@ -61,7 +61,7 @@ class App extends React.Component {
       <div className="App">
         <section className="main">
           <Route exact path='/' component={HomePage}/>
-          <Route path='/vibes' component={Preferences}/>
+          <Route path='/seeds' component={Preferences}/>
           <Route path='/calendar' component={CalendarPage}/>
         </section>
       </div>

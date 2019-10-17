@@ -43,3 +43,8 @@ Run tests with Jest and Enzyme.
 ```
 $ npm run test
 ```
+
+## Technologies Used:
+* React
+* HTML5
+* CSS3

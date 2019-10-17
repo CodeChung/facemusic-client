@@ -36,8 +36,9 @@ class Demo extends React.Component {
         redirect: false,
         photo: '',
         loading: false,
-        emotion: {},
+        emotion: emotionsData,
         analyzedPhoto: '',
+        url: 'https://open.spotify.com/embed/track/6QAOd9yhzUrer1shQvPANO',
     }
     onTakePhoto(dataUri) {
         this.setState({photo: dataUri})
@@ -48,6 +49,42 @@ class Demo extends React.Component {
             error: '',
         })
 
+    }
+    analyzePhoto() {
+        this.setState({ loading: true })
+        const photoData = this.state.photo
+        const body = JSON.stringify({img: photoData})
+        ServerApiService.convertPhotoToEmotion(body)
+            .then(res => {
+                const emotionData = res.faceAttributes.emotion
+                const neutralVal = emotionData.neutral
+                const emotion = {}
+                for (const [key, val] of Object.entries(emotionData)) {
+                    if (key !== 'neutral') {
+                        emotion[key] = val / (1 - neutralVal)
+                    }
+                }
+                ServerApiService.getDemoRecommendations(emotion)
+                    .then(result => {
+                        this.setState({
+                            tracks: result,
+                            error: '',
+                            emotion,
+                            analyzedPhoto: res.url,
+                            loading: false,
+                            url: result[0].url.replace('track', 'embed/track'),
+                        })
+                    })
+                })
+            .catch(res => {
+                this.setState({ error: res.error, loading: false })
+            })
+    }
+    deletePhoto() {
+        this.setState({
+            photo: '',
+            error: '',
+        })
     }
     analyzePhoto() {
         this.setState({ loading: true })
@@ -75,9 +112,18 @@ class Demo extends React.Component {
             })
     }
     render() {
-        const { entry, redirect, loading } = this.state
-        const url = 'https://open.spotify.com/embed/track/6QAOd9yhzUrer1shQvPANO'
-        const camera = loading ? <Image img={'https://www.placecage.com/757/1001'} /> : (
+        let { emotion, entry, redirect, loading, photo, url } = this.state
+        url = !loading ? 'https://open.spotify.com/embed/track/6QAOd9yhzUrer1shQvPANO' : 'https://open.spotify.com/embed/track/1hsNqMXibIbjGQEgOzWwKW'
+        const camera = photo.length ? (
+            <div className='demo-photo'>
+                <img
+                width={768}
+                src={photo}
+                alt='current'/>
+                <button className='analyze-img' onClick={() => this.analyzePhoto()}>Analyze</button>
+                <button className='delete-img' onClick={() => this.deletePhoto()}>Delete</button>
+            </div>
+        ) : (
             <div className='demo-camera'>
                 <Camera 
                     onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
@@ -100,7 +146,7 @@ class Demo extends React.Component {
                     <div className='entry-graph'>
                         <div className='donut'>
                             <h3>Emotional Analysis</h3>
-                            <Donut emotions={emotionsData}/>
+                            <Donut emotions={emotion}/>
                         </div>
                         <div className='entry-notes'>
                             <h3>Notes:</h3>

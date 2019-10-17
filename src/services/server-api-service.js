@@ -2,6 +2,20 @@ import config from '../config'
 import TokenService from './token-service'
 
 const ServerApiService = {
+    getDemoRecommendations(emotions) {
+        return fetch(`${config.API_ENDPOINT}/music/demo`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify(emotions)
+        })
+        .then(res =>
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
     getSpotifySearch(keyword) {
         return fetch(`${config.API_ENDPOINT}/music/search/` + keyword)
             .then(res =>

@@ -41,7 +41,6 @@ class HomePage extends React.Component {
             photo: '',
             error: '',
         })
-
     }
     analyzePhoto() {
         this.setState({ loading: true })
@@ -73,8 +72,7 @@ class HomePage extends React.Component {
         const { artists, loading, tracks } = this.state
         const photo = this.state.photo
         if (artists.length === 0 && tracks.length === 0) {
-            return <Redirect to='/vibes' />
-            // return <div className='warning'><h3>Please add seeds in Preferences tab before starting</h3></div>
+            return <Redirect to='/seeds' />
         } else {
             return !photo ?
             <div className='home-photo photo-booth'>
@@ -84,7 +82,6 @@ class HomePage extends React.Component {
             </div>
             :
             <div className='home-photo current-img'>
-                {/* <div className='hidden'/> */}
                 <img
                     width={768}
                     src={photo}

@@ -2,6 +2,7 @@ import React from 'react'
 import Artist from '../Artist/Artist'
 import Track from '../Track/Track'
 import ServerApiService from '../../services/server-api-service'
+import AppContext from '../../AppContext'
 
 
 class SearchVibes extends React.Component {
@@ -11,8 +12,21 @@ class SearchVibes extends React.Component {
             keyword: '',
             artists: [],
             tracks: [],
-            view: 'artists'
+            view: 'artists',
+            savedArtists: [],
+            savedTracks: [],
+            loading: false,
         }
+    }
+    componentDidMount() {
+        this.setState({ loading: true })
+        ServerApiService.getSavedSeeds()
+        .then(res => {
+            const { tracks, artists } = res
+            let savedTracks = tracks
+            let savedArtists = artists
+            this.setState({savedArtists, savedTracks, loading: false })
+        })
     }
     updateKeyword(keyword) {
         this.setState({keyword})
@@ -79,11 +93,19 @@ class SearchVibes extends React.Component {
             </div>
     }
     render() {
+        const { loading, savedArtists, savedTracks, artists, tracks } = this.state
+        const message = (savedArtists.length + savedTracks.length + artists.length + tracks.length) ? 
+            'Want Facejams based on music you like? Save your artist/track preferences here.' 
+            : 
+            <span className='new-user-seeds'>First, please add 5 or more seeds before starting.<br />Then head over to the home page.</span>
         const active = 'seed-active'
+        if (loading) {
+            return <div/>
+        }
         return (
             <section className='search-vibes'>
                 <form className='add-vibe' onSubmit={event => this.handleSearch(event)}>
-                    <label htmlFor='vibe'>Want Facejams based on music you like? <br/>Save your artist/track preferences here.</label>
+                    <label htmlFor='vibe'>{message}</label>
                     <br/>
                     <input 
                         id='vibe'
@@ -116,5 +138,7 @@ class SearchVibes extends React.Component {
         )
     }
 }
+
+SearchVibes.contextType = AppContext
 
 export default SearchVibes

@@ -87,7 +87,7 @@ class Results extends React.Component {
                     <br/>
                     <button>Find Track</button>
                 </form>
-                {this.state.tracks.length && <h3>Recommendations</h3>}
+                {!!this.state.tracks.length && <h3>Recommendations</h3>}
                 <div className='recommendation-list'>
                     {tracks}
                 </div>

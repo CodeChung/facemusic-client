@@ -15,21 +15,21 @@ class Preferences extends React.Component {
             <section className='vibes'>
                 <div className='vibes-nav'>
                     <Link 
-                        to='/vibes/'
+                        to='/seeds/'
                         onClick={() => this.setState({ currentView: 'search' })}
                         className={current === 'search' ? 'active-vibe' : ''}>
-                        Find Vibes
+                        Find Seeds
                     </Link>
                     <Link 
-                        to='/vibes/saved'
+                        to='/seeds/saved'
                         onClick={() => this.setState({ currentView: 'saved' })}
                         className={current === 'saved' ? 'active-vibe' : ''}>
-                        My Vibes
+                        My Seeds
                     </Link>
                 </div>
                 <div className='vibes-main'>
-                    <Route exact path='/vibes/' component={SearchVibes}/>
-                    <Route path='/vibes/saved' component={SavedVibes}/>
+                    <Route exact path='/seeds/' component={SearchVibes}/>
+                    <Route path='/seeds/saved' component={SavedVibes}/>
                 </div>
             </section>
         )

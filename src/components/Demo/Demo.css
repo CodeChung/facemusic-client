@@ -1,20 +1,32 @@
 .demo-page .entry {
-    margin-top: 75px;
-    color: whitesmoke;
-    height: auto;
+  margin-top: 75px;
+  color: whitesmoke;
+  height: auto;
+  width: 90%;
 }
 
 .demo-camera {
-  width: 100%;
-  height: 450px;
+  justify-content: center;
+  border-radius: 2px;
 }
 
 .demo-entry {
-    outline: none;
+  outline: none;
 }
 
 .demo-page .entry-face {
-    position: relative;
+  position: relative;
+}
+
+
+.demo-page .delete-img, .demo-page .analyze-img {
+  font-size: 20px;
+  margin: 10px;
+  position: relative;
+}
+
+iframe {
+  width: 100%;
 }
 
 .tooltip {
@@ -53,30 +65,30 @@
 }
 
 iframe .tooltiptext-left {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 110%;
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
 } 
 
 iframe .tooltiptext-left::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
 }
 
 iframe .tooltiptext-left {
-    visibility: active;
+  visibility: active;
 }
