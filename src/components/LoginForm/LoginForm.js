@@ -62,6 +62,7 @@ export default class LoginForm extends Component {
             Password
           </label>
           <input
+            autoComplete='password'
             required
             placeholder='password'
             name='password'

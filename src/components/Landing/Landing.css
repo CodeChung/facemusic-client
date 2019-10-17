@@ -151,8 +151,12 @@
         float: none;
         transform: rotate(90deg)
     }
+    .landing-block img {
+        transform: none;
+    }
     .landing-desc {
-        text-align: center;
+        text-align: left;
+        color: seashell;
     }
 }
 

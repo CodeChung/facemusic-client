@@ -60,6 +60,7 @@ class RegistrationForm extends Component {
             name='password'
             type='password'
             required
+            autoComplete='password'
             id='registration-password'>
           </input>
         </div>

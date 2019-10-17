@@ -47,7 +47,7 @@ class DemoPage extends React.Component {
                         <h2>
                             {moment(new Date()).format('MMM DD, YYYY')}
                         </h2>
-                        <Image img={'https://i.imgur.com/nFQciCR.jpg'} />
+                        <Image img={'https://images.unsplash.com/photo-1518799175676-a0fed7996acb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"><span className='tooltiptext-left'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span></iframe>
                     </div>
                     <div className='entry-graph'>
