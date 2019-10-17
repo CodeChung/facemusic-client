@@ -174,9 +174,10 @@
     margin-top: 0 !important;
     padding-top: 20px;
     margin-bottom: 60px;
+    width: 100% !important;
   }
   .main-new-user {
-    justify-content: start;
+    justify-content: center;
     align-items: center;
   }
 }

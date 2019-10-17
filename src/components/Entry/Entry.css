@@ -112,8 +112,14 @@
     .entry-face {
         overflow: visible;
         width: 95%;
+        padding-left: 0;
+        margin: 0 auto;
     }
     .entry-graph {
-        width: 95%;
+        width:  95%;
+        margin: 0 auto;
+    }
+    .entry-graph .donut {
+        height: auto;
     }
 }
