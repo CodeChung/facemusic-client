@@ -13,6 +13,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",
+    "react-contenteditable": "^3.3.2",
     "react-dom": "^16.8.6",
     "react-html5-camera-photo": "^1.4.3",
     "react-router-dom": "^5.0.1",

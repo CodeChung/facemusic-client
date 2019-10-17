@@ -9,7 +9,7 @@ import moment from 'moment';
 import ServerApiService from '../../services/server-api-service';
 
 const Image = styled.div`
-    background-image: url(${props => props.img}) ;
+    background-image: url(${props => props.img});
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

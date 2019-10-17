@@ -19,7 +19,7 @@ class LandingInfo extends React.Component {
                 <section className='landing-desc' id='home'>
                     <h1>Facejams</h1>
                     <h4>It's time to listen to that face.</h4>
-                    <a href='#demo'><button>Demo</button></a>
+                    <a href='/demo'><button>Demo</button></a>
                 </section>
                 <section className='landing-block'>
                     <img src='https://i.imgur.com/fPbJCAj.png' alt='wave' />

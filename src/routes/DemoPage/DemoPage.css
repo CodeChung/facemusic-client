@@ -6,6 +6,10 @@
     position: relative;
 }
 
+.entry-notes {
+  margin-top: 100px;
+}
+
 .tooltip {
   position: relative;
 }

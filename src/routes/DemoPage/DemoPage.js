@@ -3,9 +3,8 @@ import { Redirect } from 'react-router-dom';
 import Donut from '../../components/Donut/Donut';
 import styled from 'styled-components';
 import './DemoPage.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointLeft } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import ContentEditable from 'react-contenteditable';
 
 const Image = styled.div`
     background-image: url(${props => props.img}) ;
@@ -33,9 +32,10 @@ class DemoPage extends React.Component {
     state = {
         entry: {},
         redirect: false,
+        html: `<span className='tooltiptext'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span>`,
     }
     render() {
-        const { entry, redirect } = this.state
+        const { html, redirect } = this.state
         const url = 'https://open.spotify.com/embed/track/42zd6DYQ4o4SECmTITrM1U'
         if (redirect) {
             return <Redirect to='/' />
@@ -47,7 +47,7 @@ class DemoPage extends React.Component {
                         <h2>
                             {moment(new Date()).format('MMM DD, YYYY')}
                         </h2>
-                        <Image img={'https://snipboard.io/LYoEvV.jpg'} />
+                        <Image img={'https://i.imgur.com/nFQciCR.jpg'} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"><span className='tooltiptext-left'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span></iframe>
                     </div>
                     <div className='entry-graph'>
@@ -55,16 +55,16 @@ class DemoPage extends React.Component {
                             <h3>Emotional Analysis</h3>
                             <Donut emotions={emotionsData}/>
                         </div>
-                        <div className='entry-notes'>
+                        <div className='entry-notes tooltip'>
                             <h3>Notes:</h3>
-                            <div className='demo-entry tooltip'
-                                contentEditable='true'>
-                                <span className='tooltiptext'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span>
-                                Wow, what a day. I made bread for the first time. It was surprisingly good.
-                                <br/>
-                                <br/>
-                                What a real surprise. I was so surprised.
-                            </div>
+                            <ContentEditable
+                                className='demo-entry'
+                                innerRef={this.contentEditable}
+                                html={html}
+                                disabled={false}      
+                                onChange={this.handleChange} 
+                                tagName='article' 
+                            />
                         </div>
                     </div>
                 </div>

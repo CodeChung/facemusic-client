@@ -1,23 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Donut from '../../components/Donut/Donut';
-import styled from 'styled-components';
 import './Demo.css';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import ServerApiService from '../../services/server-api-service';
 import moment from 'moment';
-
-const Image = styled.div`
-    background-image: url(${props => props.img}) ;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 52vh;
-    height: 52vh;
-    border-radius: 5px
-`
+import ContentEditable from 'react-contenteditable';
 
 const emotionsData = {
     anger: "0",
@@ -32,6 +21,10 @@ const emotionsData = {
 
 class Demo extends React.Component { 
     state = {
+        html: `Take a picture on the left, then analyze.
+        <br/>
+        <br/>
+        You can write here, by the way. `,
         entry: {},
         redirect: false,
         photo: '',
@@ -64,15 +57,21 @@ class Demo extends React.Component {
                         emotion[key] = val / (1 - neutralVal)
                     }
                 }
+                this.setState({
+                    error: '',
+                    emotion,
+                    analyzedPhoto: res.url,
+                })
                 ServerApiService.getDemoRecommendations(emotion)
                     .then(result => {
+                        const url = result[0].url ? result[0].url.replace('track', 'embed/track') : 'https://open.spotify.com/embed/track/2BY5fNHmpjV797ByjLX4I7'
                         this.setState({
                             tracks: result,
                             error: '',
                             emotion,
                             analyzedPhoto: res.url,
                             loading: false,
-                            url: result[0].url.replace('track', 'embed/track'),
+                            url,
                         })
                     })
                 })
@@ -80,40 +79,9 @@ class Demo extends React.Component {
                 this.setState({ error: res.error, loading: false })
             })
     }
-    deletePhoto() {
-        this.setState({
-            photo: '',
-            error: '',
-        })
-    }
-    analyzePhoto() {
-        this.setState({ loading: true })
-        const photoData = this.state.photo
-        const body = JSON.stringify({img: photoData})
-        ServerApiService.convertPhotoToEmotion(body)
-            .then(res => {
-                const emotionData = res.faceAttributes.emotion
-                const neutralVal = emotionData.neutral
-                const emotion = {}
-                for (const [key, val] of Object.entries(emotionData)) {
-                    if (key !== 'neutral') {
-                        emotion[key] = val / (1 - neutralVal)
-                    }
-                }
-                this.setState({
-                    error: '',
-                    emotion,
-                    analyzedPhoto: res.url,
-                    loading: false,
-                })
-            })
-            .catch(res => {
-                this.setState({ error: res.error, loading: false })
-            })
-    }
     render() {
-        let { emotion, entry, redirect, loading, photo, url } = this.state
-        url = !loading ? 'https://open.spotify.com/embed/track/6QAOd9yhzUrer1shQvPANO' : 'https://open.spotify.com/embed/track/1hsNqMXibIbjGQEgOzWwKW'
+        let { emotion, redirect, loading, photo, url } = this.state
+        url = !loading ? url : 'https://open.spotify.com/embed/track/1hsNqMXibIbjGQEgOzWwKW'
         const camera = photo.length ? (
             <div className='demo-photo'>
                 <img
@@ -150,14 +118,13 @@ class Demo extends React.Component {
                         </div>
                         <div className='entry-notes'>
                             <h3>Notes:</h3>
-                            <div className='demo-entry tooltip'
-                                contentEditable='true'>
-                                <span className='tooltiptext'>Take a picture, analyze emotions, listen to music. Facejams :)</span>
-                                Take a picture on the left, then analyze.
-                                <br/>
-                                <br/>
-                                You can write here, by the way. 
-                            </div>
+                            <ContentEditable
+                                innerRef={this.contentEditable}
+                                html={this.state.html}
+                                disabled={false}      
+                                onChange={this.handleChange} 
+                                tagName='article' 
+                            />
                         </div>
                     </div>
                 </div>

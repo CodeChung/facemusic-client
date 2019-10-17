@@ -23,11 +23,13 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    ServerApiService.getSavedSeeds()
-      .then(res => {
-        const { tracks, artists } = res
-        this.setState({ tracks, artists })
-      })
+    if (TokenService.hasAuthToken()) {
+      ServerApiService.getSavedSeeds()
+        .then(res => {
+          const { tracks, artists } = res
+          this.setState({ tracks, artists })
+        })
+    }
   }
   logout() {
     TokenService.clearAuthToken()

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom'
 import SavedVibes from '../../components/SavedVibes/SavedVibes'
 import SearchVibes from '../../components/SearchVibes/SearchVibes'
-import Camera from 'react-html5-camera-photo';
 import './Vibes.css'
 
 class Preferences extends React.Component {
