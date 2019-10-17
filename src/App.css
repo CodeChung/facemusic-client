@@ -179,5 +179,6 @@
   .main-new-user {
     justify-content: center;
     align-items: center;
+    height: auto;
   }
 }

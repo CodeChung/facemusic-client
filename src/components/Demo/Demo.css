@@ -92,3 +92,7 @@ iframe .tooltiptext-left::after {
 iframe .tooltiptext-left {
   visibility: active;
 }
+
+.demo-photo {
+  width: 90%;
+}
