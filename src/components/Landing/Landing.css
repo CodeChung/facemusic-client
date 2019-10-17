@@ -158,11 +158,18 @@
         text-align: left;
         color: seashell;
     }
+    .landing-desc h1 {
+        padding-top: 0;
+    }
 }
 
 @media(max-width:768px){
     .landing-main h1 {
         font-size: 42px;
         margin-top: 200px;
+    }
+
+    .landing-block {
+        height: auto;
     }
 }

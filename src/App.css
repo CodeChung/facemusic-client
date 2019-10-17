@@ -137,6 +137,16 @@
   background: rgb(188, 224, 223)
 }
 
+@media only screen and (max-width: 992px) {
+  .non-user {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.05), 
+      rgba(0, 0, 0, 0.15)
+    ), url("https://i.imgur.com/UdS6xB9.jpg") no-repeat center center fixed; 
+    width: 100%;
+  }
+}
+
 @media(max-width:768px){
   .App {
     height: calc(100vh - 48px);
@@ -150,5 +160,23 @@
   .navigation a {
     font-size: 10px;
     margin: 5px 2.5px;
+  }
+  .non-user {
+    background: #087E8B;
+  }
+  .landing-desc {
+    background: #087E8B;
+  }
+  .demo-page {
+    margin-top: 30px !important;
+  }
+  .demo-page .entry {
+    margin-top: 0 !important;
+    padding-top: 20px;
+    margin-bottom: 60px;
+  }
+  .main-new-user {
+    justify-content: start;
+    align-items: center;
   }
 }
