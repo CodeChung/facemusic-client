@@ -79,7 +79,7 @@ class HomePage extends React.Component {
             return !photo ?
             <div className='home-photo photo-booth'>
                 <Camera
-                onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
+                    onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
                 />
             </div>
             :

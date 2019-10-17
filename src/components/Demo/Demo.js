@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import './Demo.css';
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import ServerApiService from '../../services/server-api-service';
 import moment from 'moment';
 
 const Image = styled.div`
@@ -33,10 +34,56 @@ class Demo extends React.Component {
     state = {
         entry: {},
         redirect: false,
+        photo: '',
+        loading: false,
+        emotion: {},
+        analyzedPhoto: '',
+    }
+    onTakePhoto(dataUri) {
+        this.setState({photo: dataUri})
+    }
+    deletePhoto() {
+        this.setState({
+            photo: '',
+            error: '',
+        })
+
+    }
+    analyzePhoto() {
+        this.setState({ loading: true })
+        const photoData = this.state.photo
+        const body = JSON.stringify({img: photoData})
+        ServerApiService.convertPhotoToEmotion(body)
+            .then(res => {
+                const emotionData = res.faceAttributes.emotion
+                const neutralVal = emotionData.neutral
+                const emotion = {}
+                for (const [key, val] of Object.entries(emotionData)) {
+                    if (key !== 'neutral') {
+                        emotion[key] = val / (1 - neutralVal)
+                    }
+                }
+                this.setState({
+                    error: '',
+                    emotion,
+                    analyzedPhoto: res.url,
+                    loading: false,
+                })
+            })
+            .catch(res => {
+                this.setState({ error: res.error, loading: false })
+            })
     }
     render() {
-        const { entry, redirect } = this.state
+        const { entry, redirect, loading } = this.state
         const url = 'https://open.spotify.com/embed/track/6QAOd9yhzUrer1shQvPANO'
+        const camera = loading ? <Image img={'https://www.placecage.com/757/1001'} /> : (
+            <div className='demo-camera'>
+                <Camera 
+                    onTakePhoto={(dataUri) => this.onTakePhoto(dataUri)}
+                />
+            </div>
+        )
         if (redirect) {
             return <Redirect to='/' />
         }
@@ -47,8 +94,7 @@ class Demo extends React.Component {
                         <h2>
                             {moment(new Date()).format('MMM DD, YYYY')}
                         </h2>
-                        {/* <Image img={'https://www.placecage.com/757/1001'} /> */}
-                        <Camera />
+                        {camera}
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"><span className='tooltiptext-left'>It analyzes the emotions featured on your face and returns music that reflects how you feel.</span></iframe>
                     </div>
                     <div className='entry-graph'>

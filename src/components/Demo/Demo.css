@@ -1,6 +1,12 @@
 .demo-page .entry {
-    margin-top: 50px;
+    margin-top: 75px;
     color: whitesmoke;
+    height: auto;
+}
+
+.demo-camera {
+  width: 100%;
+  height: 450px;
 }
 
 .demo-entry {
