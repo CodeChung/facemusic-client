@@ -168,8 +168,11 @@
         font-size: 42px;
         margin-top: 200px;
     }
-
     .landing-block {
         height: auto;
+    }
+    .landing-desc {
+        bottom: 60px;
+        position: relative;
     }
 }

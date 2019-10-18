@@ -2,7 +2,7 @@
 ## Introduction
 FaceJams is a React application that allows users to find musical recommendations based on the emotions depicted in their faces. 
 
-![enter image description here](https://snipboard.io/XwaFKy.jpg)
+![enter image description here](https://snipboard.io/iouc7b.jpg)
 
 **How it works**
 1. Add your musical preferences

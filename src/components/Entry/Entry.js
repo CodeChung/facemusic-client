@@ -71,7 +71,7 @@ class Entry extends React.Component {
                         <h2>{this.props.entry && moment(this.props.entry.last_logged).format('MMM DD, YYYY')}</h2>
                         <Image img={this.props.entry ? this.props.entry.img : ''} />
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                        <button onClick={this.toggleDelete}>Delete</button>
+                        {/* <button onClick={this.toggleDelete}>Delete</button> */}
                     </div>
                     <div className='entry-graph'>
                         <div className='donut'>

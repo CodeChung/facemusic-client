@@ -56,5 +56,7 @@
 @media(max-width:768px){
     .LoginPage {
         width: 70%;
+        margin-top: 150px;
+        padding-top: 30px;
     }
 }

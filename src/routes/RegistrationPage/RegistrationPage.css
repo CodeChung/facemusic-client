@@ -56,5 +56,7 @@
 @media(max-width:768px){
     .registration-page {
         width: 70%;
+        margin-top: 150px;
+        padding-top: 30px;
     }
 }
