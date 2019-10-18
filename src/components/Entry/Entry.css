@@ -15,6 +15,17 @@
     border-radius: 5px;
 }
 
+.daily-face {
+    object-fit: cover; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 50vh;
+    height: 50vh;
+    border-radius: 5px;
+}
+
 .entry-face {
     box-sizing: border-box;
     display: flex;

@@ -85,7 +85,6 @@ class Demo extends React.Component {
         const camera = photo.length ? (
             <div className='demo-photo'>
                 <img
-                width={768}
                 src={photo}
                 alt='current'/>
                 <button className='analyze-img' onClick={() => this.analyzePhoto()}>Analyze</button>

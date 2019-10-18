@@ -96,3 +96,7 @@ iframe .tooltiptext-left {
 .demo-photo {
   width: 90%;
 }
+
+.demo-photo img {
+  object-fit: cover;
+}

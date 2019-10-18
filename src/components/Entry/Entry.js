@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components';
 import Donut from '../Donut/Donut'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,16 +7,6 @@ import './Entry.css'
 import moment from 'moment';
 import ServerApiService from '../../services/server-api-service';
 
-const Image = styled.div`
-    background-image: url(${props => props.img});
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 50vh;
-    height: 50vh;
-    border-radius: 5px
-`
 
 class Entry extends React.Component {
     state = {
@@ -69,7 +58,8 @@ class Entry extends React.Component {
                 <div className='entry'>
                     <div className='entry-face'>
                         <h2>{this.props.entry && moment(this.props.entry.last_logged).format('MMM DD, YYYY')}</h2>
-                        <Image img={this.props.entry ? this.props.entry.img : ''} />
+                        <img className='daily-face' src={this.props.entry ? this.props.entry.img : ''} alt='daily face' />
+                        {/* <Image img={this.props.entry ? this.props.entry.img : ''} /> */}
                         <iframe title='spotify' src={url} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                         {/* <button onClick={this.toggleDelete}>Delete</button> */}
                     </div>
